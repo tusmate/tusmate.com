@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUSMATE - TUS Sınavına Hazırlık Platformu | Oyunlaştırılmış TUS Eğitimi</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="TUSMATE ile TUS hazırlığınızı oyunlaştırın. 10.000+ soru, 210 ünite, yapay zeka destekli analiz ve interaktif bir platform ile TUS başarısına ulaşın.">
+    <meta name="keywords" content="TUS, TUS sınavı, tıpta uzmanlık sınavı, TUS hazırlık, TUS soru bankası, TUS eğitim, TUS app, tıp öğrencileri, tus çalışma, tıp eğitimi">
+    <meta name="author" content="TUSMATE">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusmate.com/">
+    <meta property="og:title" content="TUSMATE - TUS Sınavına Hazırlık Platformu">
+    <meta property="og:description" content="10.000+ soru ve oyunlaştırılmış eğitim sistemi ile TUS hazırlığınızı keyifli hale getirin.">
+    <meta property="og:image" content="https://tusmate.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tusmate.com/">
+    <meta property="twitter:title" content="TUSMATE - TUS Sınavına Hazırlık Platformu">
+    <meta property="twitter:description" content="10.000+ soru ve oyunlaştırılmış eğitim sistemi ile TUS hazırlığınızı keyifli hale getirin.">
+    <meta property="twitter:image" content="https://tusmate.com/images/twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tusmate.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.sticky {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        /* Hero Section - Updated for two-column layout */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            top: -100px;
+            left: -100px;
+            z-index: 0;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.1);
+            bottom: -50px;
+            right: -50px;
+            z-index: 0;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .hero-mascot {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mascot-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+        }
+        
+        .hero-content {
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: var(--gray);
+        }
+        
+        .hero-buttons {
+            margin-bottom: 0;
+        }
+        
+        .hero-buttons .btn {
+            margin: 0;
+            margin-right: 10px;
+        }
+        
+        /* Responsive adjustments for the hero section */
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-mascot {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            
+            .hero-content {
+                order: 2;
+                text-align: center;
+            }
+            
+            .mascot-image {
+                max-height: 300px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-buttons .btn {
+                margin: 0 5px;
+            }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon i {
+            font-size: 24px;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+            margin: 0 20px 40px;
+            position: relative;
+        }
+        
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 100px;
+            background: var(--primary);
+            top: 50px;
+            left: 100%;
+            opacity: 0.5;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .step-description {
+            text-align: center;
+            color: var(--gray);
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .pricing-plans {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.highlighted {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .pricing-card.highlighted::before {
+            content: "En Popüler";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .pricing-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var (--primary);
+            margin-bottom: 5px;
+        }
+        
+        .pricing-duration {
+            color: var(--gray);
+            font-size: 16px;
+        }
+        
+        .pricing-features {
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .pricing-cta {
+            text-align: center;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .accordions {
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+        
+        .accordion {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .accordion-header {
+            background-color: white;
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: #f8fafc;
+        }
+        
+        .accordion-header h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .accordion-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-icon::before, .accordion-icon::after {
+            content: '';
+            position: absolute;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-icon::before {
+            width: 2px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .accordion-icon::after {
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        
+        .accordion.active .accordion-icon::before {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+        
+        .accordion-content {
+            background-color: white;
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .accordion.active .accordion-content {
+            max-height: 300px;
+            padding: 0 30px 20px;
+        }
+        
+        /* Download */
+        .download {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            text-align: center;
+        }
+        
+        .download h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .download p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .store-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .store-badge {
+            transition: transform 0.3s;
+            display: block;
+        }
+        
+        .store-badge:hover {
+            transform: translateY(-3px);
+        }
+        
+        .web-button {
+            background-color: white;
+            color: var(--primary-dark);
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .web-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        .web-button i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        /* Footer - Updated Styles */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li a i {
+            margin-right: 8px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+            
+            .footer-column ul li a {
+                justify-content: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+        }
+        
+        .slide-left {
+            opacity: 0;
+        }
+        
+        .slide-right {
+            opacity: 0;
+        }
+        
+        .fade-in-active {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .slide-left-active {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .slide-right-active {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 80px;
+                background-color: white;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                clip-path: circle(0px at 90% -10%);
+                -webkit-clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+                opacity: 0;
+            }
+            
+            .nav-links.active {
+                clip-path: circle(1500px at 90% -10%);
+                -webkit-clip-path: circle(1500px at 90% -10%);
+                pointer-events: all;
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .pricing-plans {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                margin-bottom: 30px;
+            }
+            
+            .step:not(:last-child)::after {
+                display: none;
+            }
+            
+            .step {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo" aria-label="TUSMATE Ana Sayfa">TUSMATE</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Özellikler</a></li>
+                    <li><a href="#how-it-works">Nasıl Çalışır</a></li>
+                    <li><a href="#pricing">Abonelikler</a></li>
+                    <li><a href="#faq">SSS</a></li>
+                </ul>
+                <a href="#download" class="btn">Şimdi Başla</a>
+                <div class="hamburger" aria-label="Menü">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-mascot fade-in">
+                    <img src="logo.png" alt="TUSMATE Maskot" class="mascot-image">
+                </div>
+                <div class="hero-content">
+                    <h1 class="slide-left">TUS Başarısı İçin<br><span style="color:var(--primary); font-size: 1.1em;">Akıllı Çözüm</span></h1>
+                    <p class="slide-right">TUSMATE ile TUS hazırlık sürecinizi oyunlaştırın, 10.000+ soru ve detaylı anlatımlarla öğrenmeyi keyifli hale getirin.</p>
+                    <div class="hero-buttons fade-in">
+                        <a href="#download" class="btn pulse">Şimdi Başla</a>
+                        <a href="#features" class="btn btn-secondary">Daha Fazla Bilgi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features" aria-labelledby="features-heading">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="features-heading">Neden TUSMATE?</h2>
+                <p>TUS hazırlık sürecinizi daha verimli, daha eğlenceli ve daha etkili hale getirmek için tasarlandı.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map" aria-hidden="true"></i>
+                    </div>
+                    <h3>Detaylı Öğrenme Haritası</h3>
+                    <p>11 ana ünite ve 210 alt üniteye ayrılmış, oyun haritası formatında hazırlanmış kapsamlı bir eğitim sistemi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-question-circle" aria-hidden="true"></i>
+                    </div>
+                    <h3>Zengin Soru Bankası</h3>
+                    <p>10.000'den fazla özenle hazırlanmış soru ve her soru için detaylı açıklamalar ile konuları pekiştirin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </div>
+                    <h3>Kapsamlı Eğitim Dokümanları</h3>
+                    <p>Her alt ünite için özel hazırlanmış eğitim dokümanlarıyla bilgilerinizi güçlendirin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy" aria-hidden="true"></i>
+                    </div>
+                    <h3>Rekabet ve Motivasyon</h3>
+                    <p>Arkadaşlarınızla yarışın, puan toplayın ve başarılarınızı scoreboard'da gösterin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks" aria-hidden="true"></i>
+                    </div>
+                    <h3>Günlük Görevler</h3>
+                    <p>Motivasyonunuzu yüksek tutacak ve düzenli çalışmanızı sağlayacak günlük görevlerle ilerleyin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot" aria-hidden="true"></i>
+                    </div>
+                    <h3>Yapay Zeka Desteği</h3>
+                    <p>Kişisel analizler ve önerilerle güçlendirilmiş yapay zeka sistemimizle eksiklerinizi keşfedin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                    </div>
+                    <h3>Akıllı Bildirim Sistemi</h3>
+                    <p>Çalışma planınıza uygun hatırlatmalar ve motivasyonel bildirimlerle düzenli çalışın.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                    </div>
+                    <h3>TUS Duyuruları</h3>
+                    <p>TUS sınavıyla ilgili tüm güncel bilgi ve duyurulara anında erişin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync" aria-hidden="true"></i>
+                    </div>
+                    <h3>Sürekli Gelişim</h3>
+                    <p>Düzenli içerik güncellemeleri ve yeni özelliklerle her zaman bir adım önde kalın.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works" aria-labelledby="how-works-heading">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="how-works-heading">Nasıl Çalışır?</h2>
+                <p>TUSMATE ile TUS hazırlık süreci bu kadar kolay.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Üye Ol</div>
+                    <p class="step-description">Hızlıca kayıt olun ve hemen kullanmaya başlayın.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Ünite Seç</div>
+                    <p class="step-description">11 ana ünite ve 210 alt üniteden çalışmak istediğinizi seçin.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Öğren & Çöz</div>
+                    <p class="step-description">Eğitim dokümanları ile öğrenin, sorularla pekiştirin.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">İlerle</div>
+                    <p class="step-description">Puanlar kazanın, seviye atlayın ve arkadaşlarınızla yarışın.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="pricing-heading">Abonelik Planları</h2>
+                <p>İhtiyacınıza en uygun planı seçin ve TUS yolculuğunuza başlayın.</p>
+            </div>
+            <div class="pricing-plans">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Temel Paket</div>
+                        <div class="pricing-price">₺149</div>
+                        <div class="pricing-duration">Aylık</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 11 ana ünite erişimi</li>
+                            <li><i class="fas fa-check"></i> 5.000+ soru bankası</li>
+                            <li><i class="fas fa-check"></i> Temel eğitim dokümanları</li>
+                            <li><i class="fas fa-check"></i> Scoreboard erişimi</li>
+                            <li><i class="fas fa-times"></i> AI analiz ve tavsiyeleri</li>
+                            <li><i class="fas fa-times"></i> Özel içerikler</li>
+                            <li><i class="fas fa-times"></i> Premium destek</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pricing-card highlighted">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Premium Paket</div>
+                        <div class="pricing-price">₺249</div>
+                        <div class="pricing-duration">Aylık</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Tüm ünite ve alt ünitelere erişim</li>
+                            <li><i class="fas fa-check"></i> 10.000+ soru bankası</li>
+                            <li><i class="fas fa-check"></i> Tüm eğitim dokümanları</li>
+                            <li><i class="fas fa-check"></i> Scoreboard ve özel ödüller</li>
+                            <li><i class="fas fa-check"></i> AI analiz ve kişisel tavsiyeler</li>
+                            <li><i class="fas fa-check"></i> Haftalık özel içerikler</li>
+                            <li><i class="fas fa-check"></i> 7/24 premium destek</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Yıllık Paket</div>
+                        <div class="pricing-price">₺1990</div>
+                        <div class="pricing-duration">Yıllık (%33 İndirim)</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Premium paketin tüm özellikleri</li>
+                            <li><i class="fas fa-check"></i> 2 ay bedava kullanım</li>
+                            <li><i class="fas fa-check"></i> Özel deneme sınavları</li>
+                            <li><i class="fas fa-check"></i> İleri düzey AI analizleri</li>
+                            <li><i class="fas fa-check"></i> Kişisel çalışma koçluğu</li>
+                            <li><i class="fas fa-check"></i> Özel çalışma grupları</li>
+                            <li><i class="fas fa-check"></i> Ayrıcalıklı içeriklere öncelikli erişim</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq" aria-labelledby="faq-heading">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="faq-heading">Sıkça Sorulan Sorular</h2>
+                <p>TUSMATE hakkında merak edilenler.</p>
+            </div>
+            <div class="accordions">
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h3>TUSMATE'i ücretsiz kullanabilir miyim?</h3>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Evet, TUSMATE'in temel özellikleri ücretsiz olarak kullanılabilir. Ancak, daha kapsamlı içerik ve gelişmiş özelliklere erişmek için premium aboneliklerimiz mevcuttur.</p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h3>İçerikler ne sıklıkla güncelleniyor?</h3>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>TUSMATE içerikleri düzenli olarak güncellenmektedir. Yeni sorular, eğitim dokümanları ve özellikler her ay eklenmektedir. TUS müfredatındaki değişikliklere göre içeriğimiz sürekli yenilenmektedir.</p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h3>Aboneliğimi nasıl iptal edebilirim?</h3>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Aboneliğinizi istediğiniz zaman hesap ayarlarınızdan veya mobil uygulama mağazanız üzerinden kolayca iptal edebilirsiniz. İptal işlemi anında gerçekleşir ve mevcut abonelik süreniz sonuna kadar premium özelliklere erişiminiz devam eder.</p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <h3>Web ve mobil sürüm arasında fark var mı?</h3>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Hayır, TUSMATE'in web ve mobil sürümleri aynı özelliklere sahiptir. Hesabınızla dilediğiniz platformdan giriş yapabilir ve kaldığınız yerden devam edebilirsiniz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download" aria-labelledby="download-heading">
+        <div class="container">
+            <h2 id="download-heading">TUSMATE ile Şimdi Başlayın</h2>
+            <p>TUS hazırlık yolculuğuna bugün başlayın. Web, iOS ve Android platformlarında kullanılabilir.</p>
+            <div class="store-buttons">
+                <a href="#" aria-label="Google Play'den İndir" class="store-badge">
+                    <img src="google_button.png" alt="Google Play'den alın" height="60">
+                </a>
+                <a href="#" aria-label="App Store'dan İndir" class="store-badge">
+                    <img src="ios_button.png" alt="App Store'dan İndirin" height="60">
+                </a>
+                <a href="#" class="store-badge web-button" aria-label="Web Sürümünü Aç">
+                    <div class="web-button-content">
+                        <i class="fas fa-globe" aria-hidden="true"></i>
+                        <span>Web'de Kullan</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add CSS for updated consistent download buttons -->
+    <style>
+        /* Updated Store Button Styles */
+        .store-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .store-badge {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .store-badge:hover {
+            transform: translateY(-3px);
+        }
+        
+        .web-button {
+            height: 50px;
+            background-color: black;
+            width: 180px;
+        }
+        
+        .web-button-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .web-button-content i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .web-button-content span {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .store-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .web-button {
+                width: 200px;
+            }
+        }
+    </style>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column main-column">
+                    <h3>TUSMATE</h3>
+                    <p class="footer-description">TUS sınavına hazırlık için geliştirilen, oyunlaştırılmış eğitim platformu. 10.000+ soru ve 210 alt ünite ile TUS başarınızı artırın.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column contact-column">
+                    <h3>İletişim</h3>
+                    <ul>
+                        <li><a href="mailto:info@tusmate.com"><i class="fas fa-envelope" aria-hidden="true"></i> info@tusmate.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column legal-column">
+                    <h3>Yasal</h3>
+                    <ul>
+                        <li><a href="#">Kullanım Koşulları</a></li>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Çerez Politikası</a></li>
+                        <li><a href="#">KVKK</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TUSMATE. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "TUSMATE",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Android, iOS, Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "149.00",
+            "priceCurrency": "TRY"
+        },
+        "description": "TUS sınavına hazırlanmak için oyunlaştırılmış bir eğitim platformu. 10.000+ soru, 210 alt ünite ve yapay zeka destekli analizler."
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TUSMATE",
+        "url": "https://tusmate.com",
+        "logo": "https://tusmate.com/images/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/tusmate",
+            "https://twitter.com/tusmate",
+            "https://www.instagram.com/tusmate"
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "TUSMATE'i ücretsiz kullanabilir miyim?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Evet, TUSMATE'in temel özellikleri ücretsiz olarak kullanılabilir. Ancak, daha kapsamlı içerik ve gelişmiş özelliklere erişmek için premium aboneliklerimiz mevcuttur."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "İçerikler ne sıklıkla güncelleniyor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TUSMATE içerikleri düzenli olarak güncellenmektedir. Yeni sorular, eğitim dokümanları ve özellikler her ay eklenmektedir. TUS müfredatındaki değişikliklere göre içeriğimiz sürekli yenilenmektedir."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Web ve mobil sürüm arasında fark var mı?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hayır, TUSMATE'in web ve mobil sürümleri aynı özelliklere sahiptir. Hesabınızla dilediğiniz platformdan giriş yapabilir ve kaldığınız yerden devam edebilirsiniz."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced animations on scroll - animate elements every time they enter viewport
+            const animateElements = document.querySelectorAll('.feature-card, .pricing-card, .step, .hero-content h1, .hero-content p, .hero-buttons, .hero-mascot, .section-title, .accordion');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // When element enters viewport
+                    if (entry.isIntersecting) {
+                        // Get any animation classes the element might have
+                        const hasSlideLeft = entry.target.classList.contains('slide-left');
+                        const hasSlideRight = entry.target.classList.contains('slide-right');
+                        const hasPulse = entry.target.classList.contains('pulse');
+                        
+                        // Remove animation classes first (to reset)
+                        entry.target.classList.remove('fade-in-active', 'slide-left-active', 'slide-right-active');
+                        
+                        // Force a reflow to ensure the removal takes effect before adding
+                        void entry.target.offsetWidth;
+                        
+                        // Apply appropriate animation class
+                        if (hasSlideLeft) {
+                            entry.target.classList.add('slide-left-active');
+                        } else if (hasSlideRight) {
+                            entry.target.classList.add('slide-right-active');
+                        } else if (!hasPulse) { // Don't add fade-in to pulse elements
+                            entry.target.classList.add('fade-in-active');
+                        }
+                    } else {
+                        // When element exits viewport, remove active animation classes
+                        entry.target.classList.remove('fade-in-active', 'slide-left-active', 'slide-right-active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '-50px'
+            });
+            
+            animateElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Hamburger menu
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a nav link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Sticky header
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('sticky');
+                } else {
+                    header.classList.remove('sticky');
+                }
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // FAQ accordions
+            const accordions = document.querySelectorAll('.accordion');
+            
+            accordions.forEach(accordion => {
+                const header = accordion.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    accordion.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
