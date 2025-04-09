@@ -756,20 +756,20 @@
             }
         }
         
-        /* Animations */
+        /* Animations - İyileştirilmiş Versiyon */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
+            to { opacity: 1; transform: translateY(0); will-change: transform, opacity; }
         }
         
         @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
+            from { opacity: 0; transform: translateX(-30px); will-change: transform, opacity; }
+            to { opacity: 1; transform: translateX(0); will-change: transform, opacity; }
         }
         
         @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+            from { opacity: 0; transform: translateX(30px); will-change: transform, opacity; }
+            to { opacity: 1; transform: translateX(0); will-change: transform, opacity; }
         }
         
         @keyframes pulse {
@@ -778,33 +778,71 @@
             100% { transform: scale(1); }
         }
         
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); will-change: transform, opacity; }
+            to { opacity: 1; transform: translateY(0); will-change: transform, opacity; }
+        }
+        
+        @keyframes fadeScale {
+            from { opacity: 0; transform: scale(0.9); will-change: transform, opacity; }
+            to { opacity: 1; transform: scale(1); will-change: transform, opacity; }
+        }
+        
         .fade-in {
             opacity: 0;
+            backface-visibility: hidden;
         }
         
         .slide-left {
             opacity: 0;
+            backface-visibility: hidden;
         }
         
         .slide-right {
             opacity: 0;
+            backface-visibility: hidden;
+        }
+        
+        .fade-up {
+            opacity: 0;
+            backface-visibility: hidden;
+        }
+        
+        .fade-scale {
+            opacity: 0;
+            backface-visibility: hidden;
         }
         
         .fade-in-active {
-            animation: fadeIn 0.8s ease-out forwards;
+            animation: fadeIn 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
         }
         
         .slide-left-active {
-            animation: slideInLeft 0.8s ease-out forwards;
+            animation: slideInLeft 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
         }
         
         .slide-right-active {
-            animation: slideInRight 0.8s ease-out forwards;
+            animation: slideInRight 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+        }
+        
+        .fade-up-active {
+            animation: fadeUp 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+        }
+        
+        .fade-scale-active {
+            animation: fadeScale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
         }
         
         .pulse {
-            animation: pulse 2s infinite;
+            animation: pulse 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
         }
+
+        /* Animasyonlar için stagger delay sınıfları */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
         
         /* Responsive */
         @media (max-width: 768px) {
@@ -877,6 +915,111 @@
                 margin-bottom: 40px;
             }
         }
+
+        /* Sayfa yükleme ekranı ve gelişmiş animasyonlar */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10000;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+        
+        .page-loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .loader-progress {
+            width: 200px;
+            height: 4px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loader-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease-out;
+        }
+        
+        .loader-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* Gelişmiş Animasyon Tanımlamaları */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
+            to { opacity: 1; transform: translateY(0); will-change: transform, opacity; }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); will-change: transform, opacity; }
+            to { opacity: 1; transform: translateX(0); will-change: transform, opacity; }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); will-change: transform, opacity; }
+            to { opacity: 1; transform: translateX(0); will-change: transform, opacity; }
+        }
+        
+        /* Daha görünür animasyon sürelerini iyileştirilmiş easing ile belirt */
+        .fade-in-active {
+            animation: fadeIn 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+        }
+        
+        .slide-left-active {
+            animation: slideInLeft 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+        }
+        
+        .slide-right-active {
+            animation: slideInRight 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+        }
+        
+        .fade-up-active {
+            animation: fadeUp 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+        }
+        
+        .fade-scale-active {
+            animation: fadeScale 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+        }
+
+        /* Geliştirilmiş stagger gecikmeler için sınıflar */
+        .delay-100 { animation-delay: 100ms !important; }
+        .delay-200 { animation-delay: 200ms !important; }
+        .delay-300 { animation-delay: 300ms !important; }
+        .delay-400 { animation-delay: 400ms !important; }
+        .delay-500 { animation-delay: 500ms !important; }
+        .delay-600 { animation-delay: 600ms !important; }
+        .delay-700 { animation-delay: 700ms !important; }
+        .delay-800 { animation-delay: 800ms !important; }
+        .delay-900 { animation-delay: 900ms !important; }
+        .delay-1000 { animation-delay: 1000ms !important; }
+        .delay-1200 { animation-delay: 1200ms !important; }
+        .delay-1500 { animation-delay: 1500ms !important; }
+        .delay-2000 { animation-delay: 2000ms !important; }
     </style>
 </head>
 <body>
@@ -1327,50 +1470,372 @@
         ]
     }
     </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sayfa yükleme animasyonunu yönet
+            const pageLoader = document.querySelector('.page-loader');
+            const progressBar = document.querySelector('.loader-progress-bar');
+            const loaderText = document.querySelector('.loader-text');
+            
+            // Simüle edilmiş sayfa yükleme ilerlemesi
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress === 100) {
+                    clearInterval(interval);
+                    loaderText.textContent = "TUSMATE Hazır!";
+                    
+                    // Sayfa yükleme animasyonunu kaldır ve içerik animasyonlarını başlat
+                    setTimeout(() => {
+                        pageLoader.classList.add('fade-out');
+                        setTimeout(() => {
+                            // Sayfa yükleme ekranını tamamen kaldır ve içerik animasyonlarını başlat
+                            initAnimations();
+                        }, 600);
+                    }, 500);
+                }
+            }, 200);
+
+            function initAnimations() {
+                // İçerik animasyonlarını daha kontrollü ve gecikme ile başlat
+                
+                // Animasyon özelliklerini önbelleğe al
+                const animationOptions = {
+                    threshold: 0.2,
+                    rootMargin: '-20px 0px',
+                    triggerOnce: false
+                };
+                
+                // Hero section'daki elemanlara daha uzun gecikmeler ekle
+                const heroElements = [
+                    document.querySelector('.hero-mascot'),
+                    document.querySelector('.hero-content h1'),
+                    document.querySelector('.hero-content p'),
+                    document.querySelector('.hero-buttons')
+                ];
+
+                // Hero elementlerini kademeli olarak canlandır
+                heroElements.forEach((el, index) => {
+                    if (el) {
+                        setTimeout(() => {
+                            const animationType = 
+                                el.classList.contains('slide-left') ? 'slide-left-active' :
+                                el.classList.contains('slide-right') ? 'slide-right-active' :
+                                el.classList.contains('fade-up') ? 'fade-up-active' :
+                                el.classList.contains('fade-scale') ? 'fade-scale-active' : 
+                                'fade-in-active';
+                            
+                            el.classList.add(animationType);
+                        }, 400 + (index * 300)); // Daha uzun gecikmelerle kademeli animasyon
+                    }
+                });
+
+                // Feature kartlarını grupla ve geciktirmeli olarak göster
+                const featureCards = document.querySelectorAll('.feature-card');
+                featureCards.forEach((card, i) => {
+                    card.classList.add('fade-scale');
+                    setTimeout(() => {
+                        card.classList.add('fade-scale-active');
+                    }, 800 + (i * 150));
+                });
+                
+                // Adımları geciktirerek göster
+                const steps = document.querySelectorAll('.step');
+                steps.forEach((step, i) => {
+                    step.classList.add('fade-up');
+                    setTimeout(() => {
+                        step.classList.add('fade-up-active');
+                    }, 1200 + (i * 300));
+                });
+                
+                // Fiyatlandırma kartlarını geciktirerek göster
+                const pricingCards = document.querySelectorAll('.pricing-card');
+                pricingCards.forEach((card, i) => {
+                    card.classList.add('fade-scale');
+                    setTimeout(() => {
+                        card.classList.add('fade-scale-active');
+                    }, 1000 + (i * 300)); 
+                });
+                
+                // FAQ ve akordeon animasyonlarını daha sonra başlat
+                const accordions = document.querySelectorAll('.accordion');
+                accordions.forEach((accordion, i) => {
+                    accordion.classList.add('fade-in');
+                    setTimeout(() => {
+                        accordion.classList.add('fade-in-active');
+                    }, 1200 + (i * 200));
+                });
+                
+                // Görünüm alanına girdikçe elemanlara animasyon ekleyen gelişmiş intersection observer
+                const animatedSections = document.querySelectorAll('.section-title');
+                
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const section = entry.target.closest('section');
+                            if (section) {
+                                const sectionTitle = section.querySelector('.section-title');
+                                
+                                // Başlık animasyonu
+                                if (sectionTitle && !sectionTitle.classList.contains('animated')) {
+                                    sectionTitle.classList.add('fade-up-active', 'animated');
+                                    
+                                    // Seksiyon türüne göre içerik animasyonları
+                                    if (section.classList.contains('features')) {
+                                        animateFeatures(section);
+                                    } else if (section.classList.contains('how-it-works')) {
+                                        animateSteps(section);
+                                    } else if (section.classList.contains('pricing')) {
+                                        animatePricing(section);
+                                    } else if (section.classList.contains('faq')) {
+                                        animateFAQ(section);
+                                    }
+                                }
+                            }
+                            sectionObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '-50px 0px'
+                });
+                
+                animatedSections.forEach(section => {
+                    sectionObserver.observe(section);
+                    section.classList.add('fade-up');
+                });
+                
+                // Seksiyon türüne göre animasyon fonksiyonları
+                function animateFeatures(section) {
+                    const featureCards = section.querySelectorAll('.feature-card');
+                    featureCards.forEach((card, i) => {
+                        setTimeout(() => {
+                            card.classList.add('fade-scale-active');
+                        }, 200 + (i * 150));
+                    });
+                }
+                
+                function animateSteps(section) {
+                    const steps = section.querySelectorAll('.step');
+                    steps.forEach((step, i) => {
+                        setTimeout(() => {
+                            step.classList.add('fade-up-active');
+                        }, 200 + (i * 300));
+                    });
+                }
+                
+                function animatePricing(section) {
+                    const cards = section.querySelectorAll('.pricing-card');
+                    cards.forEach((card, i) => {
+                        setTimeout(() => {
+                            card.classList.add('fade-scale-active');
+                        }, 200 + (i * 200));
+                    });
+                }
+                
+                function animateFAQ(section) {
+                    const accordions = section.querySelectorAll('.accordion');
+                    accordions.forEach((accordion, i) => {
+                        setTimeout(() => {
+                            accordion.classList.add('fade-in-active');
+                        }, 200 + (i * 150));
+                    });
+                }
+
+                // Hamburger menü
+                const hamburger = document.querySelector('.hamburger');
+                const navLinks = document.querySelector('.nav-links');
+                
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                
+                // Menu linke tıklandığında menüyü kapat
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+                
+                // Geliştrilmiş sticky header
+                const header = document.querySelector('header');
+                let lastScrollPosition = 0;
+                
+                window.addEventListener('scroll', () => {
+                    const currentScrollPosition = window.scrollY;
+                    
+                    if (currentScrollPosition > 100) {
+                        if (!header.classList.contains('sticky')) {
+                            requestAnimationFrame(() => {
+                                header.classList.add('sticky');
+                            });
+                        }
+                    } else if (header.classList.contains('sticky')) {
+                        requestAnimationFrame(() => {
+                            header.classList.remove('sticky');
+                        });
+                    }
+                    
+                    lastScrollPosition = currentScrollPosition;
+                }, { passive: true });
+                
+                // Geliştirilmiş smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            // Scroll pozisyonunu hesapla
+                            const headerHeight = header.offsetHeight;
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                
+                // Geliştirilmiş FAQ accordion animasyonu
+                const allAccordions = document.querySelectorAll('.accordion');
+                
+                allAccordions.forEach(accordion => {
+                    const header = accordion.querySelector('.accordion-header');
+                    const content = accordion.querySelector('.accordion-content');
+                    
+                    header.addEventListener('click', () => {
+                        const wasActive = accordion.classList.contains('active');
+                        
+                        requestAnimationFrame(() => {
+                            accordion.classList.toggle('active');
+                            
+                            if (!wasActive) {
+                                const height = content.scrollHeight;
+                                content.style.maxHeight = `${height}px`;
+                            } else {
+                                content.style.maxHeight = '0px';
+                            }
+                        });
+                    });
+                });
+            }
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Enhanced animations on scroll - animate elements every time they enter viewport
-            const animateElements = document.querySelectorAll('.feature-card, .pricing-card, .step, .hero-content h1, .hero-content p, .hero-buttons, .hero-mascot, .section-title, .accordion');
+            // Animasyon options
+            const animationOptions = {
+                threshold: 0.2,  // Element %20 görünür olduğunda tetikle
+                rootMargin: '-10px 0px',
+                triggerOnce: true  // Elementleri bir kere tetikle
+            };
             
+            // Animasyon için elementleri grupla
+            const heroMascot = document.querySelector('.hero-mascot');
+            const heroTitle = document.querySelector('.hero-content h1');
+            const heroDesc = document.querySelector('.hero-content p');
+            const heroButtons = document.querySelector('.hero-buttons');
+            
+            // Hero elementlerini animasyonlu hale getir - sayfa yüklendiğinde
+            setTimeout(() => {
+                if (heroMascot) heroMascot.classList.add('fade-in-active');
+                if (heroTitle) heroTitle.classList.add('slide-left-active');
+                if (heroDesc) heroDesc.classList.add('slide-right-active');
+                if (heroButtons) {
+                    heroButtons.classList.add('fade-in-active');
+                    heroButtons.style.animationDelay = '300ms';
+                }
+            }, 100);
+            
+            // Özellik kartlarına gecikme ekle
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, i) => {
+                card.classList.add('fade-scale');
+                // İlk satır için farklı bir gecikme, sonraki satırlar için başka bir gecikme
+                const row = Math.floor(i / 3);
+                const col = i % 3;
+                const delay = (row * 100) + (col * 150);
+                card.style.animationDelay = `${delay}ms`;
+            });
+            
+            // Adımlara gecikme ekle
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, i) => {
+                step.classList.add('fade-up');
+                step.style.animationDelay = `${i * 150}ms`;
+            });
+            
+            // Fiyatlandırma kartlarına gecikme ekle
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach((card, i) => {
+                card.classList.add('fade-scale');
+                card.style.animationDelay = `${i * 150}ms`;
+            });
+            
+            // FAQ'lara gecikme ekle
+            const accordions = document.querySelectorAll('.accordion');
+            accordions.forEach((accordion, i) => {
+                accordion.classList.add('fade-in');
+                accordion.style.animationDelay = `${i * 100}ms`;
+            });
+
+            // Section başlıklarına animasyon ekle
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                title.classList.add('fade-up');
+            });
+            
+            // Geliştirilmiş Intersection Observer: Daha yumuşak animasyonlar
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // When element enters viewport
-                    if (entry.isIntersecting) {
-                        // Get any animation classes the element might have
-                        const hasSlideLeft = entry.target.classList.contains('slide-left');
-                        const hasSlideRight = entry.target.classList.contains('slide-right');
-                        const hasPulse = entry.target.classList.contains('pulse');
-                        
-                        // Remove animation classes first (to reset)
-                        entry.target.classList.remove('fade-in-active', 'slide-left-active', 'slide-right-active');
-                        
-                        // Force a reflow to ensure the removal takes effect before adding
-                        void entry.target.offsetWidth;
-                        
-                        // Apply appropriate animation class
-                        if (hasSlideLeft) {
-                            entry.target.classList.add('slide-left-active');
-                        } else if (hasSlideRight) {
-                            entry.target.classList.add('slide-right-active');
-                        } else if (!hasPulse) { // Don't add fade-in to pulse elements
-                            entry.target.classList.add('fade-in-active');
-                        }
-                    } else {
-                        // When element exits viewport, remove active animation classes
-                        entry.target.classList.remove('fade-in-active', 'slide-left-active', 'slide-right-active');
+                    if (!entry.isIntersecting) return;
+                    
+                    // Element görünür hale geldiğinde
+                    const element = entry.target;
+                    
+                    // Animasyon tipini belirle
+                    const animationType = 
+                        element.classList.contains('slide-left') ? 'slide-left-active' :
+                        element.classList.contains('slide-right') ? 'slide-right-active' :
+                        element.classList.contains('fade-up') ? 'fade-up-active' :
+                        element.classList.contains('fade-scale') ? 'fade-scale-active' : 
+                        'fade-in-active';
+                    
+                    // Animasyonu doğal ve pürüzsüz bir şekilde uygula
+                    requestAnimationFrame(() => {
+                        element.classList.add(animationType);
+                    });
+                    
+                    // Element bir kez animasyon aldıysa gözlemlemeyi durdur
+                    if (animationOptions.triggerOnce) {
+                        observer.unobserve(element);
                     }
                 });
-            }, {
-                threshold: 0.1,
-                rootMargin: '-50px'
+            }, animationOptions);
+            
+            // Tüm animasyonlu elementleri gözlemle
+            const animatedElements = document.querySelectorAll(
+                '.fade-in, .slide-left, .slide-right, .fade-up, .fade-scale, .feature-card, .step, .pricing-card, .accordion, .section-title'
+            );
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
             });
             
-            animateElements.forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Hamburger menu
+            // Hamburger menü
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
             
@@ -1379,7 +1844,7 @@
                 navLinks.classList.toggle('active');
             });
             
-            // Close menu when clicking a nav link
+            // Menu linke tıklandığında menüyü kapat
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('active');
@@ -1387,17 +1852,32 @@
                 });
             });
             
-            // Sticky header
+            // Geliştrilmiş sticky header
             const header = document.querySelector('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('sticky');
-                } else {
-                    header.classList.remove('sticky');
-                }
-            });
+            let lastScrollTop = 0;
             
-            // Smooth scrolling
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                
+                // Yumuşak header animasyonu
+                if (scrollTop > 100) {
+                    if (!header.classList.contains('sticky')) {
+                        requestAnimationFrame(() => {
+                            header.classList.add('sticky');
+                        });
+                    }
+                } else {
+                    if (header.classList.contains('sticky')) {
+                        requestAnimationFrame(() => {
+                            header.classList.remove('sticky');
+                        });
+                    }
+                }
+                
+                lastScrollTop = scrollTop;
+            }, { passive: true }); // Performans için passive scroll
+            
+            // Yumuşak sayfa içi kaydırma
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1407,21 +1887,48 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
+                        // Scroll pozisyonunu hesapla
+                        const headerHeight = header.offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+                        
+                        // Daha yumuşak scroll animasyonu
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetPosition,
                             behavior: 'smooth'
                         });
                     }
                 });
             });
             
-            // FAQ accordions
-            const accordions = document.querySelectorAll('.accordion');
-            
+            // Gelişmiş FAQ akordeon animasyonu
             accordions.forEach(accordion => {
                 const header = accordion.querySelector('.accordion-header');
+                const content = accordion.querySelector('.accordion-content');
+                
                 header.addEventListener('click', () => {
-                    accordion.classList.toggle('active');
+                    const wasActive = accordion.classList.contains('active');
+                    
+                    // Diğer tüm akordeonları kapat (opsiyonel)
+                    // accordions.forEach(acc => {
+                    //     if (acc !== accordion && acc.classList.contains('active')) {
+                    //         acc.classList.remove('active');
+                    //         acc.querySelector('.accordion-content').style.maxHeight = '0px';
+                    //     }
+                    // });
+                    
+                    // Animasyonu daha yumuşak yap
+                    requestAnimationFrame(() => {
+                        accordion.classList.toggle('active');
+                        
+                        if (!wasActive) {
+                            // Akordeonu açma - yükseklik hesaplama
+                            const height = content.scrollHeight;
+                            content.style.maxHeight = `${height}px`;
+                        } else {
+                            // Akordeonu kapatma
+                            content.style.maxHeight = '0px';
+                        }
+                    });
                 });
             });
         });
