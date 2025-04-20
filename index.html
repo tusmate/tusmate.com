@@ -1489,9 +1489,19 @@
             
             .pricing-card.highlighted {
                 transform: scale(1);
-                order: -1;
+                order: 2;
                 width: 100%;
                 max-width: 380px;
+            }
+            
+            /* Bronze planının sıralaması */
+            .pricing-card:nth-child(1) {
+                order: 0; /* Bronze planını ilk sıraya getir */
+            }
+            
+            /* Silver planının sıralaması */
+            .pricing-card:nth-child(2) {
+                order: 1; /* Silver planını ikinci sıraya getir */
             }
             
             .pricing-card.highlighted:hover {
