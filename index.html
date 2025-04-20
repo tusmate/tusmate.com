@@ -488,11 +488,6 @@
             margin-bottom: 5px;
         }
         
-        .pricing-duration {
-            color: var(--gray);
-            font-size: 16px;
-        }
-        
         .pricing-features {
             margin-bottom: 30px;
         }
@@ -1177,64 +1172,395 @@
                 <h2 id="pricing-heading">Abonelik Planları</h2>
                 <p>İhtiyacınıza en uygun planı seçin ve TUS yolculuğunuza başlayın.</p>
             </div>
-            <div class="pricing-plans">
+            <div class="pricing-toggle fade-in">
+                <span class="toggle-option active" data-plan="monthly">Aylık</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricingToggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-option" data-plan="yearly">Yıllık</span>
+                <span class="yearly-savings">10 ay öde, 12 ay kullan</span>
+            </div>
+            <div class="pricing-plans fade-scale">
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <div class="pricing-name">Temel Paket</div>
-                        <div class="pricing-price">₺149</div>
-                        <div class="pricing-duration">Aylık</div>
+                        <div class="pricing-name">Bronze</div>
+                        <div class="pricing-price-container">
+                            <div class="original-price">₺1.199,00</div>
+                            <div class="pricing-price">₺599,00</div>
+                        </div>
                     </div>
                     <div class="pricing-features">
                         <ul>
-                            <li><i class="fas fa-check"></i> 11 ana ünite erişimi</li>
-                            <li><i class="fas fa-check"></i> 5.000+ soru bankası</li>
-                            <li><i class="fas fa-check"></i> Temel eğitim dokümanları</li>
-                            <li><i class="fas fa-check"></i> Scoreboard erişimi</li>
-                            <li><i class="fas fa-times"></i> AI analiz ve tavsiyeleri</li>
-                            <li><i class="fas fa-times"></i> Özel içerikler</li>
-                            <li><i class="fas fa-times"></i> Premium destek</li>
+                            <li><i class="fas fa-check"></i> Tüm Konu ve Alt Başlıklara Tam Erişim</li>
+                            <li><i class="fas fa-check"></i> Öğrenme Haritasındaki Tüm Seviyelere Erişim</li>
+                            <li><i class="fas fa-check"></i> Puan Tablosundaki Canlı Liderlik Sıralaması</li>
+                            <li><i class="fas fa-check"></i> Reklamsız Kullanım Deneyimi</li>
+                            <li><i class="fas fa-check"></i> Her Ay 500 Bonus Kredi</li>
                         </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#download" class="btn">Hemen Başla</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Silver</div>
+                        <div class="pricing-price-container">
+                            <div class="original-price">₺1.699,00</div>
+                            <div class="pricing-price">₺849,00</div>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Tüm Konu ve Alt Başlıklara Tam Erişim</li>
+                            <li><i class="fas fa-check"></i> Öğrenme Haritasındaki Tüm Seviyelere Erişim</li>
+                            <li><i class="fas fa-check"></i> Puan Tablosundaki Canlı Liderlik Sıralaması</li>
+                            <li><i class="fas fa-check"></i> Reklamsız Kullanım Deneyimi</li>
+                            <li><i class="fas fa-check"></i> <strong>Her Ay 1000 Bonus Kredi</strong></li>
+                            <li><i class="fas fa-chart-line"></i> <strong>Temel  Performans İstatistikleri</strong></li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#download" class="btn">Hemen Başla</a>
                     </div>
                 </div>
                 <div class="pricing-card highlighted">
                     <div class="pricing-header">
-                        <div class="pricing-name">Premium Paket</div>
-                        <div class="pricing-price">₺249</div>
-                        <div class="pricing-duration">Aylık</div>
+                        <div class="pricing-name">Gold</div>
+                        <div class="pricing-price-container">
+                            <div class="original-price">₺1.999,00</div>
+                            <div class="pricing-price">₺999,00</div>
+                        </div>
                     </div>
                     <div class="pricing-features">
                         <ul>
-                            <li><i class="fas fa-check"></i> Tüm ünite ve alt ünitelere erişim</li>
-                            <li><i class="fas fa-check"></i> 10.000+ soru bankası</li>
-                            <li><i class="fas fa-check"></i> Tüm eğitim dokümanları</li>
-                            <li><i class="fas fa-check"></i> Scoreboard ve özel ödüller</li>
-                            <li><i class="fas fa-check"></i> AI analiz ve kişisel tavsiyeler</li>
-                            <li><i class="fas fa-check"></i> Haftalık özel içerikler</li>
-                            <li><i class="fas fa-check"></i> 7/24 premium destek</li>
+                            <li><i class="fas fa-check"></i> Tüm Konu ve Alt Başlıklara Tam Erişim</li>
+                            <li><i class="fas fa-check"></i> Öğrenme Haritasındaki Tüm Seviyelere Erişim</li>
+                            <li><i class="fas fa-check"></i> Puan Tablosundaki Canlı Liderlik Sıralaması</li>
+                            <li><i class="fas fa-check"></i> Reklamsız Kullanım Deneyimi</li>
+                            <li><i class="fas fa-star"></i> <strong>Her Ay Sınırsız Bonus Kredi</strong></li>
+                            <li><i class="fas fa-chart-line"></i> <strong>Detaylı  Performans İstatistikleri</strong></li>
+                            <li><i class="fas fa-headset"></i> <strong>Öncelikli Müşteri Desteği</strong></li>
                         </ul>
                     </div>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <div class="pricing-name">Yıllık Paket</div>
-                        <div class="pricing-price">₺1990</div>
-                        <div class="pricing-duration">Yıllık (%33 İndirim)</div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li><i class="fas fa-check"></i> Premium paketin tüm özellikleri</li>
-                            <li><i class="fas fa-check"></i> 2 ay bedava kullanım</li>
-                            <li><i class="fas fa-check"></i> Özel deneme sınavları</li>
-                            <li><i class="fas fa-check"></i> İleri düzey AI analizleri</li>
-                            <li><i class="fas fa-check"></i> Kişisel çalışma koçluğu</li>
-                            <li><i class="fas fa-check"></i> Özel çalışma grupları</li>
-                            <li><i class="fas fa-check"></i> Ayrıcalıklı içeriklere öncelikli erişim</li>
-                        </ul>
+                    <div class="pricing-cta">
+                        <a href="#download" class="btn">Hemen Başla</a>
                     </div>
                 </div>
             </div>
+            <div class="bonus-credits-explanation">
+                <p>*Bonus krediler, alt ünitelerin çeşitli eğitim materyallerine erişim hakkı veren dijital kredilerdir.</p>
+            </div>
         </div>
     </section>
+
+    <style>
+        /* Updated Pricing Styles */
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 40px;
+        }
+        
+        .toggle-option {
+            font-weight: 500;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .toggle-option.active {
+            color: var(--dark);
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            margin: 0 15px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: 0.4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        
+        .yearly-savings {
+            background-color: #10b981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.highlighted {
+            border: 2px solid var(--primary);
+            position: relative;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.highlighted:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+        
+        .pricing-card.highlighted::before {
+            content: "En Kapsamlı Paket";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .pricing-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .pricing-price-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .original-price {
+            font-size: 18px;
+            color: var(--gray);
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+        
+        .pricing-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .yearly-offer {
+            font-size: 14px;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .pricing-features {
+            margin-bottom: 25px;
+            flex: 1;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+        
+        .pricing-features li i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        
+        .pricing-features li .fa-times {
+            color: #e5e7eb;
+        }
+        
+        .pricing-features li strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .pricing-cta {
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .pricing-cta .btn {
+            width: 100%;
+            padding: 12px;
+        }
+        
+        .bonus-credits-explanation {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--gray);
+            opacity: 0.8;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 991px) {
+            .pricing-plans {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 40px;
+            }
+            
+            .pricing-card {
+                min-width: 320px;
+                margin: 0;
+            }
+            
+            .pricing-card.highlighted {
+                transform: scale(1);
+                order: -1;
+                width: 100%;
+                max-width: 380px;
+            }
+            
+            .pricing-card.highlighted:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pricing toggle functionality
+            const pricingToggle = document.getElementById('pricingToggle');
+            const toggleOptions = document.querySelectorAll('.toggle-option');
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            
+            const prices = {
+                monthly: {
+                    bronze: { original: '1.199,00', price: '599,00' },
+                    silver: { original: '1.699,00', price: '849,00' },
+                    gold: { original: '1.999,00', price: '999,00' }
+                },
+                yearly: {
+                    bronze: { original: '11.999,00', price: '5.999,00' },
+                    silver: { original: '16.999,00', price: '8.499,00' },
+                    gold: { original: '19.999,00', price: '9.999,00' }
+                }
+            };
+            
+            // Initialize pricing toggle
+            pricingToggle.addEventListener('change', function() {
+                togglePricing(this.checked);
+            });
+            
+            // Handle toggle option clicks
+            toggleOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const isYearly = this.dataset.plan === 'yearly';
+                    pricingToggle.checked = isYearly;
+                    togglePricing(isYearly);
+                });
+            });
+            
+            function togglePricing(isYearly) {
+                // Update active state for toggle options
+                toggleOptions.forEach(option => {
+                    if ((isYearly && option.dataset.plan === 'yearly') || 
+                        (!isYearly && option.dataset.plan === 'monthly')) {
+                        option.classList.add('active');
+                    } else {
+                        option.classList.remove('active');
+                    }
+                });
+                
+                // Update prices
+                pricingCards.forEach((card, index) => {
+                    const plan = ['bronze', 'silver', 'gold'][index];
+                    const priceMode = isYearly ? 'yearly' : 'monthly';
+                    const priceData = prices[priceMode][plan];
+                    
+                    const originalPriceEl = card.querySelector('.original-price');
+                    const pricingPriceEl = card.querySelector('.pricing-price');
+                    
+                    originalPriceEl.textContent = `₺${priceData.original}`;
+                    pricingPriceEl.textContent = `₺${priceData.price}`;
+                    
+                });
+            }
+        });
+    </script>
 
     <!-- FAQ Section -->
     <section class="faq" id="faq" aria-labelledby="faq-heading">
@@ -1474,31 +1800,42 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Sayfa yükleme animasyonunu yönet
             const pageLoader = document.querySelector('.page-loader');
-            const progressBar = document.querySelector('.loader-progress-bar');
-            const loaderText = document.querySelector('.loader-text');
             
-            // Simüle edilmiş sayfa yükleme ilerlemesi
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress > 100) progress = 100;
+            // Eğer sayfa yükleme elementleri varsa yükleme animasyonunu başlat
+            if (pageLoader) {
+                const progressBar = document.querySelector('.loader-progress-bar');
+                const loaderText = document.querySelector('.loader-text');
                 
-                progressBar.style.width = `${progress}%`;
-                
-                if (progress === 100) {
-                    clearInterval(interval);
-                    loaderText.textContent = "TUSMATE Hazır!";
+                // Simüle edilmiş sayfa yükleme ilerlemesi
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 15;
+                    if (progress > 100) progress = 100;
                     
-                    // Sayfa yükleme animasyonunu kaldır ve içerik animasyonlarını başlat
-                    setTimeout(() => {
-                        pageLoader.classList.add('fade-out');
+                    if (progressBar) {
+                        progressBar.style.width = `${progress}%`;
+                    }
+                    
+                    if (progress === 100) {
+                        clearInterval(interval);
+                        if (loaderText) {
+                            loaderText.textContent = "TUSMATE Hazır!";
+                        }
+                        
+                        // Sayfa yükleme animasyonunu kaldır ve içerik animasyonlarını başlat
                         setTimeout(() => {
-                            // Sayfa yükleme ekranını tamamen kaldır ve içerik animasyonlarını başlat
-                            initAnimations();
-                        }, 600);
-                    }, 500);
-                }
-            }, 200);
+                            pageLoader.classList.add('fade-out');
+                            setTimeout(() => {
+                                // Sayfa yükleme ekranını tamamen kaldır ve içerik animasyonlarını başlat
+                                initAnimations();
+                            }, 600);
+                        }, 500);
+                    }
+                }, 200);
+            } else {
+                // Sayfa yükleme elementleri yoksa doğrudan animasyonları başlat
+                initAnimations();
+            }
 
             function initAnimations() {
                 // İçerik animasyonlarını daha kontrollü ve gecikme ile başlat
