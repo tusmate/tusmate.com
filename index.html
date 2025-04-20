@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ------------- Ana Değişkenler ve Genel Stiller ------------- */
         :root {
             --primary: #2563eb;
             --primary-dark: #1e40af;
@@ -68,8 +69,38 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
+        /* ------------- Butonlar ------------- */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
         
-        /* Header */
+        .btn:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        /* ------------- Header ------------- */
         header {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -148,36 +179,7 @@
             transition: all 0.3s ease;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            border: 2px solid var(--primary);
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-secondary:hover {
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-        
-        /* Hero Section - Updated for two-column layout */
+        /* ------------- Hero Section ------------- */
         .hero {
             padding: 160px 0 100px;
             background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
@@ -258,45 +260,7 @@
             margin-right: 10px;
         }
         
-        /* Responsive adjustments for the hero section */
-        @media (max-width: 768px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-mascot {
-                order: 1;
-                margin-bottom: 30px;
-            }
-            
-            .hero-content {
-                order: 2;
-                text-align: center;
-            }
-            
-            .mascot-image {
-                max-height: 300px;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .hero-buttons .btn {
-                margin: 0 5px;
-            }
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-        
+        /* ------------- Bölüm Başlıkları ------------- */
         .section-title {
             text-align: center;
             margin-bottom: 60px;
@@ -313,6 +277,12 @@
             color: var(--gray);
             max-width: 700px;
             margin: 0 auto;
+        }
+        
+        /* ------------- Features Section ------------- */
+        .features {
+            padding: 100px 0;
+            background-color: var(--light);
         }
         
         .features-grid {
@@ -360,7 +330,7 @@
             color: var(--gray);
         }
         
-        /* How It Works Section */
+        /* ------------- How It Works Section ------------- */
         .how-it-works {
             padding: 100px 0;
             background-color: white;
@@ -419,12 +389,109 @@
             color: var(--gray);
         }
         
-        /* Pricing */
+        /* ------------- Pricing Section ------------- */
         .pricing {
             padding: 100px 0;
             background-color: white;
         }
         
+        /* Pricing Toggle */
+        .pricing-toggle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 40px;
+        }
+        
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .toggle-option {
+            font-weight: 500;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 15px;
+        }
+        
+        .toggle-option.active {
+            color: var(--dark);
+        }
+        
+        .yearly-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .yearly-savings {
+            background-color: #10b981;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            margin: 0 15px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: 0.4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        
+        /* Pricing Cards */
         .pricing-plans {
             display: flex;
             justify-content: center;
@@ -436,26 +503,34 @@
         .pricing-card {
             background-color: white;
             border-radius: 10px;
-            padding: 40px 30px;
+            padding: 30px 25px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             flex: 1;
-            min-width: 300px;
+            min-width: 280px;
             max-width: 350px;
             border: 1px solid #e5e7eb;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         
         .pricing-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .pricing-card.highlighted {
             border: 2px solid var(--primary);
             position: relative;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.highlighted:hover {
+            transform: translateY(-10px) scale(1.05);
         }
         
         .pricing-card.highlighted::before {
-            content: "En Popüler";
+            content: "En Kapsamlı Paket";
             position: absolute;
             top: -12px;
             left: 50%;
@@ -470,26 +545,51 @@
         
         .pricing-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             padding-bottom: 20px;
             border-bottom: 1px solid #e5e7eb;
         }
         
         .pricing-name {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .pricing-price-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .original-price {
+            font-size: 18px;
+            color: var (--gray);
+            text-decoration: line-through;
+            margin-bottom: 5px;
         }
         
         .pricing-price {
             font-size: 36px;
             font-weight: 700;
-            color: var (--primary);
+            color: var(--primary);
             margin-bottom: 5px;
         }
         
+        .yearly-offer {
+            font-size: 14px;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+            display: none;
+        }
+        
         .pricing-features {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            flex: 1;
         }
         
         .pricing-features ul {
@@ -499,19 +599,46 @@
         .pricing-features li {
             padding: 8px 0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            line-height: 1.4;
         }
         
         .pricing-features li i {
             color: var(--secondary);
             margin-right: 10px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        
+        .pricing-features li .fa-times {
+            color: #e5e7eb;
+        }
+        
+        .pricing-features li strong {
+            color: var(--primary);
+            font-weight: 600;
         }
         
         .pricing-cta {
             text-align: center;
+            margin-top: auto;
         }
         
-        /* FAQ Section */
+        .pricing-cta .btn {
+            width: 100%;
+            padding: 12px;
+        }
+        
+        .bonus-credits-explanation {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--gray);
+            opacity: 0.8;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        /* ------------- FAQ Section ------------- */
         .faq {
             padding: 100px 0;
             background-color: var(--light);
@@ -596,7 +723,7 @@
             padding: 0 30px 20px;
         }
         
-        /* Download */
+        /* ------------- Download Section ------------- */
         .download {
             padding: 100px 0;
             background: linear-gradient(135deg, #2563eb, #1e40af);
@@ -626,8 +753,13 @@
         }
         
         .store-badge {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: transform 0.3s;
-            display: block;
+            border-radius: 6px;
+            overflow: hidden;
         }
         
         .store-badge:hover {
@@ -635,29 +767,32 @@
         }
         
         .web-button {
-            background-color: white;
-            color: var(--primary-dark);
-            height: 40px;
-            display: inline-flex;
+            height: 50px;
+            background-color: black;
+            width: 180px;
+        }
+        
+        .web-button-content {
+            display: flex;
             align-items: center;
-            padding: 0 16px;
-            border-radius: 6px;
-            text-decoration: none;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .web-button-content i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .web-button-content span {
             font-weight: 500;
-            transition: transform 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 16px;
         }
         
-        .web-button:hover {
-            transform: translateY(-3px);
-        }
-        
-        .web-button i {
-            margin-right: 8px;
-            font-size: 18px;
-        }
-        
-        /* Footer - Updated Styles */
+        /* ------------- Footer ------------- */
         footer {
             background-color: var(--dark);
             color: white;
@@ -736,22 +871,61 @@
             color: rgba(255, 255, 255, 0.5);
         }
         
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .footer-social {
-                justify-content: center;
-            }
-            
-            .footer-column ul li a {
-                justify-content: center;
-            }
+        /* ------------- Sayfa Yükleme Animasyonu ------------- */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10000;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
         }
         
-        /* Animations - İyileştirilmiş Versiyon */
+        .page-loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .loader-progress {
+            width: 200px;
+            height: 4px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loader-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease-out;
+        }
+        
+        .loader-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* ------------- Animasyonlar ------------- */
+        /* Keyframe tanımlamaları */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
             to { opacity: 1; transform: translateY(0); will-change: transform, opacity; }
@@ -783,70 +957,115 @@
             to { opacity: 1; transform: scale(1); will-change: transform, opacity; }
         }
         
-        .fade-in {
-            opacity: 0;
-            backface-visibility: hidden;
-        }
-        
-        .slide-left {
-            opacity: 0;
-            backface-visibility: hidden;
-        }
-        
-        .slide-right {
-            opacity: 0;
-            backface-visibility: hidden;
-        }
-        
-        .fade-up {
-            opacity: 0;
-            backface-visibility: hidden;
-        }
-        
-        .fade-scale {
+        /* Animasyon sınıfları */
+        .fade-in, .slide-left, .slide-right, .fade-up, .fade-scale {
             opacity: 0;
             backface-visibility: hidden;
         }
         
         .fade-in-active {
-            animation: fadeIn 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            animation: fadeIn 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
         }
         
         .slide-left-active {
-            animation: slideInLeft 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            animation: slideInLeft 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
         }
         
         .slide-right-active {
-            animation: slideInRight 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            animation: slideInRight 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
         }
         
         .fade-up-active {
-            animation: fadeUp 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            animation: fadeUp 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
         }
         
         .fade-scale-active {
-            animation: fadeScale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            animation: fadeScale 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
         }
         
         .pulse {
             animation: pulse 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
         }
-
-        /* Animasyonlar için stagger delay sınıfları */
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-400 { animation-delay: 400ms; }
-        .delay-500 { animation-delay: 500ms; }
         
-        /* Responsive */
+        /* Animasyonlar için stagger delay sınıfları */
+        .delay-100 { animation-delay: 100ms !important; }
+        .delay-200 { animation-delay: 200ms !important; }
+        .delay-300 { animation-delay: 300ms !important; }
+        .delay-400 { animation-delay: 400ms !important; }
+        .delay-500 { animation-delay: 500ms !important; }
+        .delay-600 { animation-delay: 600ms !important; }
+        .delay-700 { animation-delay: 700ms !important; }
+        .delay-800 { animation-delay: 800ms !important; }
+        .delay-900 { animation-delay: 900ms !important; }
+        .delay-1000 { animation-delay: 1000ms !important; }
+        .delay-1200 { animation-delay: 1200ms !important; }
+        .delay-1500 { animation-delay: 1500ms !important; }
+        .delay-2000 { animation-delay: 2000ms !important; }
+        
+        /* ------------- Responsive ------------- */
+        @media (max-width: 991px) {
+            .pricing-plans {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 40px;
+            }
+            
+            .pricing-card {
+                min-width: 320px;
+                margin: 0;
+            }
+            
+            .pricing-card.highlighted {
+                transform: scale(1);
+                order: 2;
+                width: 100%;
+                max-width: 380px;
+            }
+            
+            /* Bronze planının sıralaması */
+            .pricing-card:nth-child(1) {
+                order: 0;
+            }
+            
+            /* Silver planının sıralaması */
+            .pricing-card:nth-child(2) {
+                order: 1;
+            }
+            
+            .pricing-card.highlighted:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
         @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-mascot {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            
+            .hero-content {
+                order: 2;
+                text-align: center;
+            }
+            
+            .mascot-image {
+                max-height: 300px;
+            }
+            
             .hero h1 {
                 font-size: 36px;
             }
             
             .hero p {
                 font-size: 18px;
+            }
+            
+            .hero-buttons .btn {
+                margin: 0 5px;
             }
             
             .nav-links {
@@ -909,112 +1128,29 @@
             .step {
                 margin-bottom: 40px;
             }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+            
+            .footer-column ul li a {
+                justify-content: center;
+            }
+            
+            .store-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .web-button {
+                width: 200px;
+            }
         }
-
-        /* Sayfa yükleme ekranı ve gelişmiş animasyonlar */
-        .page-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 10000;
-            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
-        }
-        
-        .page-loader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .loader-logo {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-        
-        .loader-progress {
-            width: 200px;
-            height: 4px;
-            background-color: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .loader-progress-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease-out;
-        }
-        
-        .loader-text {
-            margin-top: 15px;
-            font-size: 14px;
-            color: var(--gray);
-        }
-        
-        /* Gelişmiş Animasyon Tanımlamaları */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
-            to { opacity: 1; transform: translateY(0); will-change: transform, opacity; }
-        }
-        
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-30px); will-change: transform, opacity; }
-            to { opacity: 1; transform: translateX(0); will-change: transform, opacity; }
-        }
-        
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(30px); will-change: transform, opacity; }
-            to { opacity: 1; transform: translateX(0); will-change: transform, opacity; }
-        }
-        
-        /* Daha görünür animasyon sürelerini iyileştirilmiş easing ile belirt */
-        .fade-in-active {
-            animation: fadeIn 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-        }
-        
-        .slide-left-active {
-            animation: slideInLeft 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-        }
-        
-        .slide-right-active {
-            animation: slideInRight 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-        }
-        
-        .fade-up-active {
-            animation: fadeUp 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-        }
-        
-        .fade-scale-active {
-            animation: fadeScale 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-        }
-
-        /* Geliştirilmiş stagger gecikmeler için sınıflar */
-        .delay-100 { animation-delay: 100ms !important; }
-        .delay-200 { animation-delay: 200ms !important; }
-        .delay-300 { animation-delay: 300ms !important; }
-        .delay-400 { animation-delay: 400ms !important; }
-        .delay-500 { animation-delay: 500ms !important; }
-        .delay-600 { animation-delay: 600ms !important; }
-        .delay-700 { animation-delay: 700ms !important; }
-        .delay-800 { animation-delay: 800ms !important; }
-        .delay-900 { animation-delay: 900ms !important; }
-        .delay-1000 { animation-delay: 1000ms !important; }
-        .delay-1200 { animation-delay: 1200ms !important; }
-        .delay-1500 { animation-delay: 1500ms !important; }
-        .delay-2000 { animation-delay: 2000ms !important; }
     </style>
 </head>
 <body>
@@ -1181,21 +1317,30 @@
                 <p>İhtiyacınıza en uygun planı seçin ve TUS yolculuğunuza başlayın.</p>
             </div>
             <div class="pricing-toggle fade-in">
-                <span class="toggle-option active" data-plan="monthly">Aylık</span>
-                <label class="switch">
-                    <input type="checkbox" id="pricingToggle">
-                    <span class="slider round"></span>
-                </label>
-                <span class="toggle-option" data-plan="yearly">Yıllık</span>
-                <span class="yearly-savings">10 ay öde, 12 ay kullan</span>
+                <div class="toggle-container">
+                    <span class="toggle-option" data-plan="monthly">
+                        <i class="fas fa-sync-alt"></i> Aylık
+                    </span>
+                    <label class="switch">
+                        <input type="checkbox" id="pricingToggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="yearly-option">
+                        <span class="toggle-option active" data-plan="yearly">
+                            <i class="fas fa-infinity"></i> Yıllık
+                        </span>
+                        <span class="yearly-savings">10 ay öde, 12 ay kullan</span>
+                    </div>
+                </div>
             </div>
+            
             <div class="pricing-plans fade-scale">
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <div class="pricing-name">Bronze</div>
                         <div class="pricing-price-container">
-                            <div class="original-price">₺1.199,00</div>
-                            <div class="pricing-price">₺599,00</div>
+                            <div class="original-price">₺11.999,00</div>
+                            <div class="pricing-price">₺5.999,00</div>
                         </div>
                     </div>
                     <div class="pricing-features">
@@ -1215,8 +1360,8 @@
                     <div class="pricing-header">
                         <div class="pricing-name">Silver</div>
                         <div class="pricing-price-container">
-                            <div class="original-price">₺1.699,00</div>
-                            <div class="pricing-price">₺849,00</div>
+                            <div class="original-price">₺16.999,00</div>
+                            <div class="pricing-price">₺8.499,00</div>
                         </div>
                     </div>
                     <div class="pricing-features">
@@ -1237,8 +1382,8 @@
                     <div class="pricing-header">
                         <div class="pricing-name">Gold</div>
                         <div class="pricing-price-container">
-                            <div class="original-price">₺1.999,00</div>
-                            <div class="pricing-price">₺999,00</div>
+                            <div class="original-price">₺19.999,00</div>
+                            <div class="pricing-price">₺9.999,00</div>
                         </div>
                     </div>
                     <div class="pricing-features">
@@ -1262,261 +1407,6 @@
             </div>
         </div>
     </section>
-
-    <style>
-        /* Updated Pricing Styles */
-        .pricing-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0 40px;
-        }
-        
-        .toggle-option {
-            font-weight: 500;
-            color: var(--gray);
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .toggle-option.active {
-            color: var(--dark);
-        }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 30px;
-            margin: 0 15px;
-        }
-        
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #e5e7eb;
-            transition: 0.4s;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 22px;
-            width: 22px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: 0.4s;
-        }
-        
-        input:checked + .slider {
-            background-color: var(--primary);
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(30px);
-        }
-        
-        .slider.round {
-            border-radius: 34px;
-        }
-        
-        .slider.round:before {
-            border-radius: 50%;
-        }
-        
-        .yearly-savings {
-            background-color: #10b981;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-        
-        .pricing-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-            border: 1px solid #e5e7eb;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .pricing-card.highlighted {
-            border: 2px solid var(--primary);
-            position: relative;
-            transform: scale(1.05);
-        }
-        
-        .pricing-card.highlighted:hover {
-            transform: translateY(-10px) scale(1.05);
-        }
-        
-        .pricing-card.highlighted::before {
-            content: "En Kapsamlı Paket";
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .pricing-name {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .pricing-price-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .original-price {
-            font-size: 18px;
-            color: var(--gray);
-            text-decoration: line-through;
-            margin-bottom: 5px;
-        }
-        
-        .pricing-price {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .yearly-offer {
-            font-size: 14px;
-            background-color: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 500;
-            display: none;
-        }
-        
-        .pricing-features {
-            margin-bottom: 25px;
-            flex: 1;
-        }
-        
-        .pricing-features ul {
-            list-style: none;
-        }
-        
-        .pricing-features li {
-            padding: 8px 0;
-            display: flex;
-            align-items: flex-start;
-            line-height: 1.4;
-        }
-        
-        .pricing-features li i {
-            color: var(--secondary);
-            margin-right: 10px;
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-        
-        .pricing-features li .fa-times {
-            color: #e5e7eb;
-        }
-        
-        .pricing-features li strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .pricing-cta {
-            text-align: center;
-            margin-top: auto;
-        }
-        
-        .pricing-cta .btn {
-            width: 100%;
-            padding: 12px;
-        }
-        
-        .bonus-credits-explanation {
-            text-align: center;
-            margin-top: 20px;
-            color: var(--gray);
-            opacity: 0.8;
-            font-size: 14px;
-            font-style: italic;
-        }
-        
-        @media (max-width: 991px) {
-            .pricing-plans {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 40px;
-            }
-            
-            .pricing-card {
-                min-width: 320px;
-                margin: 0;
-            }
-            
-            .pricing-card.highlighted {
-                transform: scale(1);
-                order: 2;
-                width: 100%;
-                max-width: 380px;
-            }
-            
-            /* Bronze planının sıralaması */
-            .pricing-card:nth-child(1) {
-                order: 0; /* Bronze planını ilk sıraya getir */
-            }
-            
-            /* Silver planının sıralaması */
-            .pricing-card:nth-child(2) {
-                order: 1; /* Silver planını ikinci sıraya getir */
-            }
-            
-            .pricing-card.highlighted:hover {
-                transform: translateY(-10px);
-            }
-        }
-    </style>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1649,70 +1539,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Add CSS for updated consistent download buttons -->
-    <style>
-        /* Updated Store Button Styles */
-        .store-buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        
-        .store-badge {
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        
-        .store-badge:hover {
-            transform: translateY(-3px);
-        }
-        
-        .web-button {
-            height: 50px;
-            background-color: black;
-            width: 180px;
-        }
-        
-        .web-button-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            width: 100%;
-            padding: 0 20px;
-            color: white;
-        }
-        
-        .web-button-content i {
-            margin-right: 10px;
-            font-size: 24px;
-        }
-        
-        .web-button-content span {
-            font-weight: 500;
-            font-size: 16px;
-        }
-        
-        @media (max-width: 768px) {
-            .store-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .web-button {
-                width: 200px;
-            }
-        }
-    </style>
 
     <!-- Footer -->
     <footer>
