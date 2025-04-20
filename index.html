@@ -1069,7 +1069,7 @@
             }
             
             .nav-links {
-                position: absolute;
+                position: fixed;
                 right: 0;
                 top: 80px;
                 background-color: white;
@@ -1083,6 +1083,7 @@
                 transition: all 0.5s ease-out;
                 pointer-events: none;
                 opacity: 0;
+                z-index: 999;
             }
             
             .nav-links.active {
@@ -1098,6 +1099,7 @@
             
             .hamburger {
                 display: block;
+                z-index: 1000;
             }
             
             .hamburger.active div:nth-child(1) {
@@ -1408,68 +1410,6 @@
         </div>
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Pricing toggle functionality
-            const pricingToggle = document.getElementById('pricingToggle');
-            const toggleOptions = document.querySelectorAll('.toggle-option');
-            const pricingCards = document.querySelectorAll('.pricing-card');
-            
-            const prices = {
-                monthly: {
-                    bronze: { original: '1.199,00', price: '599,00' },
-                    silver: { original: '1.699,00', price: '849,00' },
-                    gold: { original: '1.999,00', price: '999,00' }
-                },
-                yearly: {
-                    bronze: { original: '11.999,00', price: '5.999,00' },
-                    silver: { original: '16.999,00', price: '8.499,00' },
-                    gold: { original: '19.999,00', price: '9.999,00' }
-                }
-            };
-            
-            // Initialize pricing toggle
-            pricingToggle.addEventListener('change', function() {
-                togglePricing(this.checked);
-            });
-            
-            // Handle toggle option clicks
-            toggleOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const isYearly = this.dataset.plan === 'yearly';
-                    pricingToggle.checked = isYearly;
-                    togglePricing(isYearly);
-                });
-            });
-            
-            function togglePricing(isYearly) {
-                // Update active state for toggle options
-                toggleOptions.forEach(option => {
-                    if ((isYearly && option.dataset.plan === 'yearly') || 
-                        (!isYearly && option.dataset.plan === 'monthly')) {
-                        option.classList.add('active');
-                    } else {
-                        option.classList.remove('active');
-                    }
-                });
-                
-                // Update prices
-                pricingCards.forEach((card, index) => {
-                    const plan = ['bronze', 'silver', 'gold'][index];
-                    const priceMode = isYearly ? 'yearly' : 'monthly';
-                    const priceData = prices[priceMode][plan];
-                    
-                    const originalPriceEl = card.querySelector('.original-price');
-                    const pricingPriceEl = card.querySelector('.pricing-price');
-                    
-                    originalPriceEl.textContent = `₺${priceData.original}`;
-                    pricingPriceEl.textContent = `₺${priceData.price}`;
-                    
-                });
-            }
-        });
-    </script>
-
     <!-- FAQ Section -->
     <section class="faq" id="faq" aria-labelledby="faq-heading">
         <div class="container">
@@ -1640,353 +1580,168 @@
     }
     </script>
     
+    <!-- Ana JavaScript Kodu -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sayfa yükleme animasyonunu yönet
-            const pageLoader = document.querySelector('.page-loader');
-            
-            // Eğer sayfa yükleme elementleri varsa yükleme animasyonunu başlat
-            if (pageLoader) {
-                const progressBar = document.querySelector('.loader-progress-bar');
-                const loaderText = document.querySelector('.loader-text');
-                
-                // Simüle edilmiş sayfa yükleme ilerlemesi
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += Math.random() * 15;
-                    if (progress > 100) progress = 100;
-                    
-                    if (progressBar) {
-                        progressBar.style.width = `${progress}%`;
-                    }
-                    
-                    if (progress === 100) {
-                        clearInterval(interval);
-                        if (loaderText) {
-                            loaderText.textContent = "TUSMATE Hazır!";
-                        }
-                        
-                        // Sayfa yükleme animasyonunu kaldır ve içerik animasyonlarını başlat
-                        setTimeout(() => {
-                            pageLoader.classList.add('fade-out');
-                            setTimeout(() => {
-                                // Sayfa yükleme ekranını tamamen kaldır ve içerik animasyonlarını başlat
-                                initAnimations();
-                            }, 600);
-                        }, 500);
-                    }
-                }, 200);
-            } else {
-                // Sayfa yükleme elementleri yoksa doğrudan animasyonları başlat
-                initAnimations();
+    document.addEventListener('DOMContentLoaded', function() {
+        // ----------------- Değişken ve Sabitlerin Tanımlanması -----------------
+        // Pricing toggle değişkenleri
+        const prices = {
+            monthly: {
+                bronze: { original: '1.199,00', price: '599,00' },
+                silver: { original: '1.699,00', price: '849,00' },
+                gold: { original: '1.999,00', price: '999,00' }
+            },
+            yearly: {
+                bronze: { original: '11.999,00', price: '5.999,00' },
+                silver: { original: '16.999,00', price: '8.499,00' },
+                gold: { original: '19.999,00', price: '9.999,00' }
             }
+        };
 
-            function initAnimations() {
-                // İçerik animasyonlarını daha kontrollü ve gecikme ile başlat
-                
-                // Animasyon özelliklerini önbelleğe al
-                const animationOptions = {
-                    threshold: 0.2,
-                    rootMargin: '-20px 0px',
-                    triggerOnce: false
-                };
-                
-                // Hero section'daki elemanlara daha uzun gecikmeler ekle
-                const heroElements = [
-                    document.querySelector('.hero-mascot'),
-                    document.querySelector('.hero-content h1'),
-                    document.querySelector('.hero-content p'),
-                    document.querySelector('.hero-buttons')
-                ];
+        // Animasyon seçenekleri
+        const animationOptions = {
+            threshold: 0.2, // Element %20 görünür olduğunda tetikle
+            rootMargin: '-20px 0px',
+            triggerOnce: true // Elementleri bir kere tetikle
+        };
 
-                // Hero elementlerini kademeli olarak canlandır
-                heroElements.forEach((el, index) => {
-                    if (el) {
-                        setTimeout(() => {
-                            const animationType = 
-                                el.classList.contains('slide-left') ? 'slide-left-active' :
-                                el.classList.contains('slide-right') ? 'slide-right-active' :
-                                el.classList.contains('fade-up') ? 'fade-up-active' :
-                                el.classList.contains('fade-scale') ? 'fade-scale-active' : 
-                                'fade-in-active';
-                            
-                            el.classList.add(animationType);
-                        }, 400 + (index * 300)); // Daha uzun gecikmelerle kademeli animasyon
-                    }
-                });
+        // ----------------- DOM Elementlerinin Seçilmesi -----------------
+        // Sayfa elementleri
+        const pageLoader = document.querySelector('.page-loader');
+        const header = document.querySelector('header');
+        
+        // Navigasyon elementleri
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        // Hero section elementleri
+        const heroElements = [
+            document.querySelector('.hero-mascot'),
+            document.querySelector('.hero-content h1'),
+            document.querySelector('.hero-content p'),
+            document.querySelector('.hero-buttons')
+        ];
+        
+        // İçerik elementleri
+        const featureCards = document.querySelectorAll('.feature-card');
+        const steps = document.querySelectorAll('.step');
+        const pricingCards = document.querySelectorAll('.pricing-card');
+        const accordions = document.querySelectorAll('.accordion');
+        const sectionTitles = document.querySelectorAll('.section-title');
+        
+        // Pricing toggle elementleri
+        const pricingToggle = document.getElementById('pricingToggle');
+        const toggleOptions = document.querySelectorAll('.toggle-option');
+        
+        // Animasyonlu elementler
+        const animatedElements = document.querySelectorAll(
+            '.fade-in, .slide-left, .slide-right, .fade-up, .fade-scale, .feature-card, .step, .pricing-card, .accordion, .section-title'
+        );
 
-                // Feature kartlarını grupla ve geciktirmeli olarak göster
-                const featureCards = document.querySelectorAll('.feature-card');
-                featureCards.forEach((card, i) => {
-                    card.classList.add('fade-scale');
-                    setTimeout(() => {
-                        card.classList.add('fade-scale-active');
-                    }, 800 + (i * 150));
-                });
+        // ----------------- Sayfa Yükleme İşlemleri -----------------
+        // Sayfa yükleme animasyonu
+        if (pageLoader) {
+            const progressBar = document.querySelector('.loader-progress-bar');
+            const loaderText = document.querySelector('.loader-text');
+            
+            // Simüle edilmiş sayfa yükleme ilerlemesi
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
                 
-                // Adımları geciktirerek göster
-                const steps = document.querySelectorAll('.step');
-                steps.forEach((step, i) => {
-                    step.classList.add('fade-up');
-                    setTimeout(() => {
-                        step.classList.add('fade-up-active');
-                    }, 1200 + (i * 300));
-                });
-                
-                // Fiyatlandırma kartlarını geciktirerek göster
-                const pricingCards = document.querySelectorAll('.pricing-card');
-                pricingCards.forEach((card, i) => {
-                    card.classList.add('fade-scale');
-                    setTimeout(() => {
-                        card.classList.add('fade-scale-active');
-                    }, 1000 + (i * 300)); 
-                });
-                
-                // FAQ ve akordeon animasyonlarını daha sonra başlat
-                const accordions = document.querySelectorAll('.accordion');
-                accordions.forEach((accordion, i) => {
-                    accordion.classList.add('fade-in');
-                    setTimeout(() => {
-                        accordion.classList.add('fade-in-active');
-                    }, 1200 + (i * 200));
-                });
-                
-                // Görünüm alanına girdikçe elemanlara animasyon ekleyen gelişmiş intersection observer
-                const animatedSections = document.querySelectorAll('.section-title');
-                
-                const sectionObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const section = entry.target.closest('section');
-                            if (section) {
-                                const sectionTitle = section.querySelector('.section-title');
-                                
-                                // Başlık animasyonu
-                                if (sectionTitle && !sectionTitle.classList.contains('animated')) {
-                                    sectionTitle.classList.add('fade-up-active', 'animated');
-                                    
-                                    // Seksiyon türüne göre içerik animasyonları
-                                    if (section.classList.contains('features')) {
-                                        animateFeatures(section);
-                                    } else if (section.classList.contains('how-it-works')) {
-                                        animateSteps(section);
-                                    } else if (section.classList.contains('pricing')) {
-                                        animatePricing(section);
-                                    } else if (section.classList.contains('faq')) {
-                                        animateFAQ(section);
-                                    }
-                                }
-                            }
-                            sectionObserver.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.2,
-                    rootMargin: '-50px 0px'
-                });
-                
-                animatedSections.forEach(section => {
-                    sectionObserver.observe(section);
-                    section.classList.add('fade-up');
-                });
-                
-                // Seksiyon türüne göre animasyon fonksiyonları
-                function animateFeatures(section) {
-                    const featureCards = section.querySelectorAll('.feature-card');
-                    featureCards.forEach((card, i) => {
-                        setTimeout(() => {
-                            card.classList.add('fade-scale-active');
-                        }, 200 + (i * 150));
-                    });
+                if (progressBar) {
+                    progressBar.style.width = `${progress}%`;
                 }
                 
-                function animateSteps(section) {
-                    const steps = section.querySelectorAll('.step');
-                    steps.forEach((step, i) => {
-                        setTimeout(() => {
-                            step.classList.add('fade-up-active');
-                        }, 200 + (i * 300));
-                    });
-                }
-                
-                function animatePricing(section) {
-                    const cards = section.querySelectorAll('.pricing-card');
-                    cards.forEach((card, i) => {
-                        setTimeout(() => {
-                            card.classList.add('fade-scale-active');
-                        }, 200 + (i * 200));
-                    });
-                }
-                
-                function animateFAQ(section) {
-                    const accordions = section.querySelectorAll('.accordion');
-                    accordions.forEach((accordion, i) => {
-                        setTimeout(() => {
-                            accordion.classList.add('fade-in-active');
-                        }, 200 + (i * 150));
-                    });
-                }
-
-                // Hamburger menü
-                const hamburger = document.querySelector('.hamburger');
-                const navLinks = document.querySelector('.nav-links');
-                
-                hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                });
-                
-                // Menu linke tıklandığında menüyü kapat
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        hamburger.classList.remove('active');
-                        navLinks.classList.remove('active');
-                    });
-                });
-                
-                // Geliştrilmiş sticky header
-                const header = document.querySelector('header');
-                let lastScrollPosition = 0;
-                
-                window.addEventListener('scroll', () => {
-                    const currentScrollPosition = window.scrollY;
-                    
-                    if (currentScrollPosition > 100) {
-                        if (!header.classList.contains('sticky')) {
-                            requestAnimationFrame(() => {
-                                header.classList.add('sticky');
-                            });
-                        }
-                    } else if (header.classList.contains('sticky')) {
-                        requestAnimationFrame(() => {
-                            header.classList.remove('sticky');
-                        });
+                if (progress === 100) {
+                    clearInterval(interval);
+                    if (loaderText) {
+                        loaderText.textContent = "TUSMATE Hazır!";
                     }
                     
-                    lastScrollPosition = currentScrollPosition;
-                }, { passive: true });
-                
-                // Geliştirilmiş smooth scrolling
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        if (targetId === '#') return;
-                        
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            // Scroll pozisyonunu hesapla
-                            const headerHeight = header.offsetHeight;
-                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
-                            
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                });
-                
-                // Geliştirilmiş FAQ accordion animasyonu
-                const allAccordions = document.querySelectorAll('.accordion');
-                
-                allAccordions.forEach(accordion => {
-                    const header = accordion.querySelector('.accordion-header');
-                    const content = accordion.querySelector('.accordion-content');
-                    
-                    header.addEventListener('click', () => {
-                        const wasActive = accordion.classList.contains('active');
-                        
-                        requestAnimationFrame(() => {
-                            accordion.classList.toggle('active');
-                            
-                            if (!wasActive) {
-                                const height = content.scrollHeight;
-                                content.style.maxHeight = `${height}px`;
-                            } else {
-                                content.style.maxHeight = '0px';
-                            }
-                        });
-                    });
-                });
-            }
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animasyon options
-            const animationOptions = {
-                threshold: 0.2,  // Element %20 görünür olduğunda tetikle
-                rootMargin: '-10px 0px',
-                triggerOnce: true  // Elementleri bir kere tetikle
-            };
-            
-            // Animasyon için elementleri grupla
-            const heroMascot = document.querySelector('.hero-mascot');
-            const heroTitle = document.querySelector('.hero-content h1');
-            const heroDesc = document.querySelector('.hero-content p');
-            const heroButtons = document.querySelector('.hero-buttons');
-            
-            // Hero elementlerini animasyonlu hale getir - sayfa yüklendiğinde
-            setTimeout(() => {
-                if (heroMascot) heroMascot.classList.add('fade-in-active');
-                if (heroTitle) heroTitle.classList.add('slide-left-active');
-                if (heroDesc) heroDesc.classList.add('slide-right-active');
-                if (heroButtons) {
-                    heroButtons.classList.add('fade-in-active');
-                    heroButtons.style.animationDelay = '300ms';
+                    // Sayfa yükleme animasyonunu kaldır ve içerik animasyonlarını başlat
+                    setTimeout(() => {
+                        pageLoader.classList.add('fade-out');
+                        setTimeout(() => {
+                            // Sayfa yükleme ekranını tamamen kaldır ve içerik animasyonlarını başlat
+                            startAnimations();
+                        }, 600);
+                    }, 500);
                 }
-            }, 100);
-            
-            // Özellik kartlarına gecikme ekle
-            const featureCards = document.querySelectorAll('.feature-card');
+            }, 200);
+        } else {
+            // Sayfa yükleme elementleri yoksa doğrudan animasyonları başlat
+            startAnimations();
+        }
+
+        // ----------------- Fonksiyon Tanımlamaları -----------------
+        
+        // Animasyonları başlatan ana fonksiyon
+        function startAnimations() {
+            // Hero elementlerini canlandır
+            heroElements.forEach((el, index) => {
+                if (el) {
+                    setTimeout(() => {
+                        const animationType = 
+                            el.classList.contains('slide-left') ? 'slide-left-active' :
+                            el.classList.contains('slide-right') ? 'slide-right-active' :
+                            el.classList.contains('fade-up') ? 'fade-up-active' :
+                            el.classList.contains('fade-scale') ? 'fade-scale-active' : 
+                            'fade-in-active';
+                        
+                        el.classList.add(animationType);
+                    }, 300 + (index * 200));
+                }
+            });
+
+            // Feature kartları animasyonu
             featureCards.forEach((card, i) => {
                 card.classList.add('fade-scale');
-                // İlk satır için farklı bir gecikme, sonraki satırlar için başka bir gecikme
                 const row = Math.floor(i / 3);
                 const col = i % 3;
                 const delay = (row * 100) + (col * 150);
                 card.style.animationDelay = `${delay}ms`;
             });
             
-            // Adımlara gecikme ekle
-            const steps = document.querySelectorAll('.step');
+            // Adımlar animasyonu
             steps.forEach((step, i) => {
                 step.classList.add('fade-up');
                 step.style.animationDelay = `${i * 150}ms`;
             });
             
-            // Fiyatlandırma kartlarına gecikme ekle
-            const pricingCards = document.querySelectorAll('.pricing-card');
+            // Fiyatlandırma kartları animasyonu
             pricingCards.forEach((card, i) => {
                 card.classList.add('fade-scale');
                 card.style.animationDelay = `${i * 150}ms`;
             });
             
-            // FAQ'lara gecikme ekle
-            const accordions = document.querySelectorAll('.accordion');
+            // FAQ animasyonu
             accordions.forEach((accordion, i) => {
                 accordion.classList.add('fade-in');
                 accordion.style.animationDelay = `${i * 100}ms`;
             });
-
-            // Section başlıklarına animasyon ekle
-            const sectionTitles = document.querySelectorAll('.section-title');
+            
+            // Section başlıkları animasyonu
             sectionTitles.forEach(title => {
                 title.classList.add('fade-up');
             });
-            
-            // Geliştirilmiş Intersection Observer: Daha yumuşak animasyonlar
+
+            // Scroll animasyonları için observer
+            initIntersectionObserver();
+        }
+
+        // Intersection Observer kurulumu
+        function initIntersectionObserver() {
+            // Görünürlüğe göre animasyon için observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
                     
-                    // Element görünür hale geldiğinde
+                    // Element görünür olduğunda
                     const element = entry.target;
                     
-                    // Animasyon tipini belirle
+                    // Elementin animasyon tipini belirle
                     const animationType = 
                         element.classList.contains('slide-left') ? 'slide-left-active' :
                         element.classList.contains('slide-right') ? 'slide-right-active' :
@@ -1994,12 +1749,12 @@
                         element.classList.contains('fade-scale') ? 'fade-scale-active' : 
                         'fade-in-active';
                     
-                    // Animasyonu doğal ve pürüzsüz bir şekilde uygula
+                    // Animasyonu pürüzsüz bir şekilde uygula
                     requestAnimationFrame(() => {
                         element.classList.add(animationType);
                     });
                     
-                    // Element bir kez animasyon aldıysa gözlemlemeyi durdur
+                    // Element animasyon aldıysa ve triggerOnce true ise gözlemlemeyi durdur
                     if (animationOptions.triggerOnce) {
                         observer.unobserve(element);
                     }
@@ -2007,111 +1762,211 @@
             }, animationOptions);
             
             // Tüm animasyonlu elementleri gözlemle
-            const animatedElements = document.querySelectorAll(
-                '.fade-in, .slide-left, .slide-right, .fade-up, .fade-scale, .feature-card, .step, .pricing-card, .accordion, .section-title'
-            );
-            
             animatedElements.forEach(element => {
                 observer.observe(element);
             });
+
+            // Bölümleri gözlemle
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const section = entry.target.closest('section');
+                        if (section) {
+                            const sectionTitle = section.querySelector('.section-title');
+                            
+                            // Başlık animasyonu
+                            if (sectionTitle && !sectionTitle.classList.contains('animated')) {
+                                sectionTitle.classList.add('fade-up-active', 'animated');
+                                
+                                // Seksiyon türüne göre içerik animasyonları
+                                if (section.classList.contains('features')) {
+                                    animateFeatures(section);
+                                } else if (section.classList.contains('how-it-works')) {
+                                    animateSteps(section);
+                                } else if (section.classList.contains('pricing')) {
+                                    animatePricing(section);
+                                } else if (section.classList.contains('faq')) {
+                                    animateFAQ(section);
+                                }
+                            }
+                        }
+                        sectionObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '-50px 0px'
+            });
             
-            // Hamburger menü
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
+            sectionTitles.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        }
+
+        // Bölümlere özel animasyon fonksiyonları
+        function animateFeatures(section) {
+            const cards = section.querySelectorAll('.feature-card');
+            cards.forEach((card, i) => {
+                setTimeout(() => {
+                    card.classList.add('fade-scale-active');
+                }, 200 + (i * 150));
+            });
+        }
+        
+        function animateSteps(section) {
+            const stepItems = section.querySelectorAll('.step');
+            stepItems.forEach((step, i) => {
+                setTimeout(() => {
+                    step.classList.add('fade-up-active');
+                }, 200 + (i * 300));
+            });
+        }
+        
+        function animatePricing(section) {
+            const cards = section.querySelectorAll('.pricing-card');
+            cards.forEach((card, i) => {
+                setTimeout(() => {
+                    card.classList.add('fade-scale-active');
+                }, 200 + (i * 200));
+            });
+        }
+        
+        function animateFAQ(section) {
+            const accordionItems = section.querySelectorAll('.accordion');
+            accordionItems.forEach((accordion, i) => {
+                setTimeout(() => {
+                    accordion.classList.add('fade-in-active');
+                }, 200 + (i * 150));
+            });
+        }
+
+        // Fiyatlandırma toggle fonksiyonu
+        function togglePricing(isYearly) {
+            // Toggle seçeneklerini güncelle
+            toggleOptions.forEach(option => {
+                if ((isYearly && option.dataset.plan === 'yearly') || 
+                    (!isYearly && option.dataset.plan === 'monthly')) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
             
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
+            // Fiyatları güncelle
+            pricingCards.forEach((card, index) => {
+                const plan = ['bronze', 'silver', 'gold'][index];
+                const priceMode = isYearly ? 'yearly' : 'monthly';
+                const priceData = prices[priceMode][plan];
+                
+                const originalPriceEl = card.querySelector('.original-price');
+                const pricingPriceEl = card.querySelector('.pricing-price');
+                
+                originalPriceEl.textContent = `₺${priceData.original}`;
+                pricingPriceEl.textContent = `₺${priceData.price}`;
+            });
+        }
+
+        // ----------------- Event Listeners -----------------
+        
+        // Hamburger menü
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
                 navLinks.classList.toggle('active');
             });
             
-            // Menu linke tıklandığında menüyü kapat
+            // Menu linkleri tıklandığında menüyü kapat
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('active');
                     navLinks.classList.remove('active');
                 });
             });
+        }
+        
+        // Scroll event listener
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
             
-            // Geliştrilmiş sticky header
-            const header = document.querySelector('header');
-            let lastScrollTop = 0;
-            
-            window.addEventListener('scroll', () => {
-                const scrollTop = window.scrollY;
-                
-                // Yumuşak header animasyonu
-                if (scrollTop > 100) {
-                    if (!header.classList.contains('sticky')) {
-                        requestAnimationFrame(() => {
-                            header.classList.add('sticky');
-                        });
-                    }
-                } else {
-                    if (header.classList.contains('sticky')) {
-                        requestAnimationFrame(() => {
-                            header.classList.remove('sticky');
-                        });
-                    }
-                }
-                
-                lastScrollTop = scrollTop;
-            }, { passive: true }); // Performans için passive scroll
-            
-            // Yumuşak sayfa içi kaydırma
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // Scroll pozisyonunu hesapla
-                        const headerHeight = header.offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
-                        
-                        // Daha yumuşak scroll animasyonu
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Gelişmiş FAQ akordeon animasyonu
-            accordions.forEach(accordion => {
-                const header = accordion.querySelector('.accordion-header');
-                const content = accordion.querySelector('.accordion-content');
-                
-                header.addEventListener('click', () => {
-                    const wasActive = accordion.classList.contains('active');
-                    
-                    // Diğer tüm akordeonları kapat (opsiyonel)
-                    // accordions.forEach(acc => {
-                    //     if (acc !== accordion && acc.classList.contains('active')) {
-                    //         acc.classList.remove('active');
-                    //         acc.querySelector('.accordion-content').style.maxHeight = '0px';
-                    //     }
-                    // });
-                    
-                    // Animasyonu daha yumuşak yap
+            // Header'ı sticky yap
+            if (scrollTop > 100) {
+                if (!header.classList.contains('sticky')) {
                     requestAnimationFrame(() => {
-                        accordion.classList.toggle('active');
-                        
-                        if (!wasActive) {
-                            // Akordeonu açma - yükseklik hesaplama
-                            const height = content.scrollHeight;
-                            content.style.maxHeight = `${height}px`;
-                        } else {
-                            // Akordeonu kapatma
-                            content.style.maxHeight = '0px';
-                        }
+                        header.classList.add('sticky');
                     });
+                }
+            } else {
+                if (header.classList.contains('sticky')) {
+                    requestAnimationFrame(() => {
+                        header.classList.remove('sticky');
+                    });
+                }
+            }
+        }, { passive: true }); // Performans için passive scroll
+        
+        // Anchor linkleri için smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Scroll pozisyonunu hesapla
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+                    
+                    // Smooth scroll animasyonu
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // FAQ Accordion
+        accordions.forEach(accordion => {
+            const header = accordion.querySelector('.accordion-header');
+            const content = accordion.querySelector('.accordion-content');
+            
+            header.addEventListener('click', () => {
+                const wasActive = accordion.classList.contains('active');
+                
+                requestAnimationFrame(() => {
+                    accordion.classList.toggle('active');
+                    
+                    if (!wasActive) {
+                        // Akordeonu aç
+                        const height = content.scrollHeight;
+                        content.style.maxHeight = `${height}px`;
+                    } else {
+                        // Akordeonu kapat
+                        content.style.maxHeight = '0px';
+                    }
                 });
             });
         });
+        
+        // Pricing toggle
+        if (pricingToggle) {
+            // Toggle değiştiğinde pricing'i güncelle
+            pricingToggle.addEventListener('change', function() {
+                togglePricing(this.checked);
+            });
+            
+            // Aylık/yıllık click işlemleri
+            toggleOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const isYearly = this.dataset.plan === 'yearly';
+                    pricingToggle.checked = isYearly;
+                    togglePricing(isYearly);
+                });
+            });
+        }
+    });
     </script>
 </body>
 </html>
