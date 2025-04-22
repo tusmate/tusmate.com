@@ -269,7 +269,7 @@
         .section-title h2 {
             font-size: 36px;
             margin-bottom: 16px;
-            color: var(--dark);
+            color: var (--dark);
         }
         
         .section-title p {
@@ -533,14 +533,15 @@
             content: "En Kapsamlı Paket";
             position: absolute;
             top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 25px; /* Ortadan sola çektim */
+            transform: none; /* translateX özelliğini kaldırdım */
             background-color: var(--primary);
             color: white;
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 600;
+            z-index: 5; /* Ribbonların altında kalması için değer azalttım (ribbon 10) */
         }
         
         .pricing-header {
@@ -548,6 +549,7 @@
             margin-bottom: 25px;
             padding-bottom: 20px;
             border-bottom: 1px solid #e5e7eb;
+            position: relative;
         }
         
         .pricing-name {
@@ -555,6 +557,56 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: var(--dark);
+            position: relative;
+            text-align: left;
+        }
+        
+        .ribbon {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            --f: .5em;
+            --r: .8em;
+            position: absolute;
+            right: 6px;
+            top: -9px;
+            padding: .5em .8em;
+            background: var(--secondary);
+            border-right: var(--f) solid #0005;
+            border-bottom: var(--r) solid #0000;
+            clip-path: polygon(calc(100% - var(--f)) 0, 0 0, 0 100%, calc(50% - var(--f)/2) calc(100% - var(--r)), calc(100% - var(--f)) 100%, calc(100% - var(--f)) var(--f), 100% var(--f));
+            min-width: 100px;
+            max-width: 120px;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        /* Özel Ribbon Renkleri */
+        .pricing-card:nth-child(1) .ribbon {
+            background-color: #CD7F32; /* Bronze */
+        }
+        
+        .pricing-card:nth-child(2) .ribbon {
+            background-color: #C0C0C0; /* Silver */
+        }
+        
+        .pricing-card:nth-child(3) .ribbon {
+            background-color: #FFD700; /* Gold */
+        }
+        
+        .ribbon .original-price {
+            font-size: 14px;
+            color: black;
+            text-decoration: line-through;
+            margin-bottom: 2px;
+            font-weight: normal; /* İnce (normal) font ağırlığı */
+        }
+        
+        .ribbon .pricing-price {
+            font-size: 18px;
+            font-weight: 700; /* Kalın font ağırlığı kalıyor */
+            color: black;
+            margin: 0;
         }
         
         .pricing-price-container {
@@ -1340,12 +1392,12 @@
             
             <div class="pricing-plans fade-scale">
                 <div class="pricing-card">
+                    <div class="ribbon">
+                        <div class="original-price">₺11.999,00</div>
+                        <div class="pricing-price">₺5.999,00</div>
+                    </div>
                     <div class="pricing-header">
-                        <div class="pricing-name">Bronze</div>
-                        <div class="pricing-price-container">
-                            <div class="original-price">₺11.999,00</div>
-                            <div class="pricing-price">₺5.999,00</div>
-                        </div>
+                        <div class="pricing-name">Bronze Premium</div>
                     </div>
                     <div class="pricing-features">
                         <ul>
@@ -1361,12 +1413,12 @@
                     </div>
                 </div>
                 <div class="pricing-card">
+                    <div class="ribbon">
+                        <div class="original-price">₺16.999,00</div>
+                        <div class="pricing-price">₺8.499,00</div>
+                    </div>
                     <div class="pricing-header">
-                        <div class="pricing-name">Silver</div>
-                        <div class="pricing-price-container">
-                            <div class="original-price">₺16.999,00</div>
-                            <div class="pricing-price">₺8.499,00</div>
-                        </div>
+                        <div class="pricing-name">Silver Premium</div>
                     </div>
                     <div class="pricing-features">
                         <ul>
@@ -1383,12 +1435,12 @@
                     </div>
                 </div>
                 <div class="pricing-card highlighted">
+                    <div class="ribbon">
+                        <div class="original-price">₺19.999,00</div>
+                        <div class="pricing-price">₺9.999,00</div>
+                    </div>
                     <div class="pricing-header">
-                        <div class="pricing-name">Gold</div>
-                        <div class="pricing-price-container">
-                            <div class="original-price">₺19.999,00</div>
-                            <div class="pricing-price">₺9.999,00</div>
-                        </div>
+                        <div class="pricing-name">Gold Premium</div>
                     </div>
                     <div class="pricing-features">
                         <ul>
