@@ -5,6 +5,7 @@
     --dark: #1f2937;
     --light: #f9fafb;
     --gray: #6b7280;
+    --bs-primary-rgb: 37, 99, 235; /* Added for primary color in RGB format */
 }
 
 * {
@@ -1125,6 +1126,8 @@ footer {
     width: 20px; /* Give icons a fixed width for alignment */
     display: inline-block; /* Allows width to take effect */
     text-align: center; /* Center icon within its allocated width */
+    --bs-text-opacity: 1; /* Added as per request */
+    color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important; /* Added as per request */
 }
 
 .feature-comparison-table td:not(:first-child) { /* For Free, Bronze, Silver, Gold data cells */
@@ -1139,6 +1142,19 @@ footer {
 .feature-comparison-table .fa-times {
     color: #ef4444; /* Red color for 'times' icon */
     font-size: 18px;
+}
+
+/* Specific icon colors for table headers */
+.feature-comparison-table th .fa-wreath-laurel {
+    color: rgb(205, 127, 50);
+}
+
+.feature-comparison-table th .fa-star {
+    color: rgb(192, 192, 192);
+}
+
+.feature-comparison-table th .fa-crown {
+    color: rgb(255, 215, 0);
 }
 
 /* Responsive adjustments for the table if needed */
