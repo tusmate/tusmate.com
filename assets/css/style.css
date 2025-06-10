@@ -1058,6 +1058,109 @@ footer {
     }
 }
 
+/* Feature Comparison Table */
+.feature-comparison-table-container {
+    margin-top: 80px;
+    padding: 40px;
+    background-color: var(--light);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.comparison-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: var(--dark);
+}
+
+.table-responsive-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.feature-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Ensure table has a minimum width for responsiveness */
+}
+
+.feature-comparison-table th,
+.feature-comparison-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e5e7eb; /* Light gray border */
+    vertical-align: middle; /* Ensure vertical alignment is consistent */
+}
+
+.feature-comparison-table th {
+    background-color: #f3f4f6; /* Slightly darker gray for header */
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 16px;
+    text-align: center; /* Default alignment for all th cells */
+}
+
+.feature-comparison-table th:first-child { /* For 'Özellikler' header */
+    text-align: left;
+}
+
+.feature-comparison-table td {
+    font-size: 15px;
+    color: var(--gray);
+    text-align: left; /* Default alignment for all td cells */
+}
+
+.feature-comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.feature-comparison-table td:first-child { /* For feature name cells */
+    font-weight: 500;
+    color: var(--dark);
+    /* text-align: left; is inherited from the general td rule */
+}
+
+.feature-comparison-table td:first-child .fas {
+    margin-right: 10px; /* Space between icon and text */
+    width: 20px; /* Give icons a fixed width for alignment */
+    display: inline-block; /* Allows width to take effect */
+    text-align: center; /* Center icon within its allocated width */
+}
+
+.feature-comparison-table td:not(:first-child) { /* For Free, Bronze, Silver, Gold data cells */
+    text-align: center;
+}
+
+.feature-comparison-table .fa-check {
+    color: var(--secondary);
+    font-size: 18px;
+}
+
+.feature-comparison-table .fa-times {
+    color: #ef4444; /* Red color for 'times' icon */
+    font-size: 18px;
+}
+
+/* Responsive adjustments for the table if needed */
+@media (max-width: 768px) {
+    .feature-comparison-table-container {
+        padding: 20px;
+        margin-top: 60px;
+    }
+    .comparison-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .feature-comparison-table th,
+    .feature-comparison-table td {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    .feature-comparison-table th {
+        font-size: 15px;
+    }
+}
+
 /* 404/Redirect Page Styles */
 body.redirect-page {
     display: flex;
