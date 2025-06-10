@@ -1230,6 +1230,21 @@ footer {
     color: rgb(255, 215, 0);
 }
 
+.feature-comparison-table td .fa-infinity {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+}
+
+.feature-comparison-table th .fas {
+    font-size: 1.5em; /* Mobil için başlık ikon boyutu */
+    margin-bottom: 3px;
+}
+
+.feature-comparison-table td:first-child .fas {
+    font-size: 1.3em; /* Mobil için özellik ikon boyutu */
+    margin-right: 5px;
+}
+
 /* Responsive adjustments for the table if needed */
 @media (max-width: 768px) {
     .feature-comparison-table-container {
