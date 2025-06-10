@@ -1057,6 +1057,79 @@ footer {
     .footer-column ul li a {
         justify-content: center;
     }
+
+    .feature-comparison-table-container {
+        padding: 15px; /* Reduced padding */
+        margin-top: 40px; /* Reduced margin */
+    }
+    .comparison-title {
+        font-size: 20px; /* Reduced font size */
+        margin-bottom: 25px; /* Reduced margin */
+    }
+
+    .feature-comparison-table {
+        min-width: unset; /* Allow table to shrink to fit its container */
+        /* width: 100%; is already set on the base style */
+    }
+
+    .feature-comparison-table th,
+    .feature-comparison-table td {
+        padding: 10px 5px; /* Adjusted padding: more vertical, less horizontal */
+        font-size: 12px;   /* Base font size for table content */
+        word-break: break-word; /* Help long words to break */
+        line-height: 1.4; /* Improve readability for smaller text */
+    }
+
+    .feature-comparison-table th { /* General TH styling for plan names etc. */
+        font-size: 11px; /* For text like "Free", "Bronze", "Silver", "Gold" */
+    }
+    .feature-comparison-table th:first-child { /* "Özellikler" header cell */
+        font-size: 13px; /* Slightly larger for the main feature column header */
+    }
+
+    .feature-comparison-table th .fas { /* Icons in TH (Bronze, Silver, Gold icons) */
+        font-size: 18px; /* Size of these icons */
+        display: inline-block; 
+        margin-bottom: 3px;
+    }
+
+    .feature-comparison-table td:first-child { /* Feature name cells */
+        font-size: 12px; /* Font size for feature names */
+    }
+    .feature-comparison-table td:first-child .fas { /* Icons next to feature names */
+        font-size: 12px; /* Match feature name font size */
+        margin-right: 6px;
+        /* color is var(--bs-primary-rgb) !important; from previous change, should persist */
+    }
+
+    /* Check/Times/Infinity icons in data cells */
+    .feature-comparison-table td .fa-check,
+    .feature-comparison-table td .fa-times,
+    .feature-comparison-table td .fa-infinity {
+        font-size: 14px; /* Size of check/cross/infinity icons */
+    }
+
+    /* Specific handling for "Aylık Bakiye" row where content is just numbers/icon */
+    .feature-comparison-table td b, /* For bold numbers like 2000, 4000 */
+    .feature-comparison-table td .fa-infinity { /* For the infinity icon specifically if it needs different sizing */
+        font-size: 13px; 
+    }
+
+    /* Ensure existing responsive padding/font size for general th, td is overridden or harmonized */
+    .feature-comparison-table th,
+    .feature-comparison-table td {
+        /* Re-asserting combined padding and font-size from above for clarity */
+        padding: 10px 5px;
+        font-size: 12px; 
+    }
+    .feature-comparison-table th {
+        /* Re-asserting specific th font-size from above */
+        font-size: 11px; 
+    }
+     .feature-comparison-table th:first-child { 
+        font-size: 13px; 
+    }
+
 }
 
 /* Feature Comparison Table */
